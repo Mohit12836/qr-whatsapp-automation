@@ -85,64 +85,62 @@ export function FacebookEmbeddedSignup({
 
     setConnecting(true);
 
-    try {
-      window.FB.login(
-        async (response: any) => {
-          if (!response?.authResponse?.code) {
+    const handleResponse = (response: any) => {
+      if (!response?.authResponse?.code) {
+        setConnecting(false);
+        if (response?.status === 'unknown') {
+          toast.info('Popup closed or cancelled by user.');
+        } else {
+          toast.error('Facebook authorization was not completed.');
+        }
+        return;
+      }
+
+      const authCode = response.authResponse.code;
+      toast.loading('Connecting WhatsApp account with Vismart CRM...', { id: 'embed-sync' });
+
+      // Run async exchange in separate promise chain
+      fetch('/api/whatsapp/embedded-signup', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          code: authCode,
+          waba_id: capturedData.waba_id,
+          phone_number_id: capturedData.phone_number_id,
+        }),
+      })
+        .then(async (res) => {
+          const data = await res.json();
+          toast.dismiss('embed-sync');
+          if (!res.ok) {
+            toast.error(data.error || 'Failed to finish WhatsApp Embedded Signup.');
             setConnecting(false);
-            if (response?.status === 'unknown') {
-              toast.info('Popup closed or cancelled by user.');
-            } else {
-              toast.error('Facebook authorization was not completed.');
-            }
             return;
           }
+          toast.success(
+            '🎉 WhatsApp Cloud API successfully connected via Facebook Embedded Signup!'
+          );
+          setConnecting(false);
+          onSuccess(data);
+        })
+        .catch((err: any) => {
+          toast.dismiss('embed-sync');
+          setConnecting(false);
+          toast.error(err.message || 'Network error during signup exchange.');
+        });
+    };
 
-          const authCode = response.authResponse.code;
-          toast.loading('Connecting WhatsApp account with Vismart CRM...', { id: 'embed-sync' });
-
-          try {
-            const res = await fetch('/api/whatsapp/embedded-signup', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                code: authCode,
-                waba_id: capturedData.waba_id,
-                phone_number_id: capturedData.phone_number_id,
-              }),
-            });
-
-            const data = await res.json();
-            toast.dismiss('embed-sync');
-
-            if (!res.ok) {
-              toast.error(data.error || 'Failed to finish WhatsApp Embedded Signup.');
-              setConnecting(false);
-              return;
-            }
-
-            toast.success(
-              '🎉 WhatsApp Cloud API successfully connected via Facebook Embedded Signup!'
-            );
-            setConnecting(false);
-            onSuccess(data);
-          } catch (err: any) {
-            toast.dismiss('embed-sync');
-            setConnecting(false);
-            toast.error(err.message || 'Network error during signup exchange.');
-          }
+    try {
+      window.FB.login(handleResponse, {
+        response_type: 'code',
+        override_default_response_type: true,
+        scope: 'whatsapp_business_management,whatsapp_business_messaging',
+        extras: {
+          setup: {},
+          featureType: 'whatsapp_business_app_onboarding',
+          sessionInfoVersion: '3',
         },
-        {
-          response_type: 'code',
-          override_default_response_type: true,
-          scope: 'whatsapp_business_management,whatsapp_business_messaging',
-          extras: {
-            setup: {},
-            featureType: 'whatsapp_business_app_onboarding',
-            sessionInfoVersion: '3',
-          },
-        }
-      );
+      });
     } catch (err: any) {
       setConnecting(false);
       toast.error(err?.message || 'Failed to open Facebook login window');
