@@ -30,6 +30,7 @@ import {
   AccordionTrigger,
   AccordionContent,
 } from '@/components/ui/accordion';
+import { FacebookEmbeddedSignup } from './facebook-embedded-signup';
 import type { WhatsAppConfig as WhatsAppConfigType } from '@/types';
 
 const MASKED_TOKEN = '••••••••••••••••';
@@ -724,6 +725,27 @@ export function WhatsAppConfig() {
             )}
           </Alert>
         )}
+
+        {/* Facebook 1-Click Embedded Signup */}
+        <FacebookEmbeddedSignup
+          isConfigured={connectionStatus === 'connected'}
+          onSuccess={() => {
+            if (accountId) {
+              fetchConfig(accountId);
+            }
+          }}
+        />
+
+        <div className="relative my-2">
+          <div className="absolute inset-0 flex items-center">
+            <span className="w-full border-t border-border" />
+          </div>
+          <div className="relative flex justify-center text-xs uppercase">
+            <span className="bg-background px-3 text-muted-foreground font-semibold">
+              Or Connect Manually
+            </span>
+          </div>
+        </div>
 
         {/* API Credentials */}
         <Card>
