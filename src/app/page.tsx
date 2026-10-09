@@ -744,20 +744,22 @@ export default function LandingPage() {
                 <Bot className="h-5 w-5" />
               </div>
               <div>
-                <p className="font-bold text-white">Vismart AI Sales Suite</p>
-                <p className="text-[10px]">Autonomous 24/7 WhatsApp AI Employee &amp; CRM Platform</p>
+                <p className="font-bold text-white">Jain Digital Service India Vismart</p>
+                <p className="text-[10px] text-emerald-400 font-mono">UDYAM-MP-37-0000236 • Official Meta Tech Platform</p>
               </div>
             </div>
 
             <div className="flex flex-wrap items-center gap-6">
-              <Link href="/login" className="hover:text-emerald-400 transition-colors">Sign In to Dashboard</Link>
+              <a href="/company.html" className="hover:text-emerald-400 transition-colors">Entity Profile</a>
+              <a href="/privacy.html" className="hover:text-emerald-400 transition-colors">Privacy Policy</a>
+              <a href="/terms.html" className="hover:text-emerald-400 transition-colors">Terms of Service</a>
+              <Link href="/login" className="hover:text-emerald-400 transition-colors">Sign In</Link>
               <Link href="/pay/trial" className="hover:text-emerald-400 transition-colors">₹99 Trial Checkout</Link>
-              <a href="#demo" className="hover:text-emerald-400 transition-colors">Live Roleplay Demo</a>
-              <a href="#features" className="hover:text-emerald-400 transition-colors">AI Brain Radar</a>
             </div>
 
-            <p className="text-[11px]">
-              &copy; {new Date().getFullYear()} Vismart AI Suite. All rights reserved. Built with Official Meta Cloud API.
+            <p className="text-[11px] text-right">
+              &copy; {new Date().getFullYear()} Jain Digital Service India Vismart.<br />
+              All rights reserved. Built with Official Meta Cloud API.
             </p>
           </div>
         </footer>
