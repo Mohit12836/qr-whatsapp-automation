@@ -3,409 +3,590 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jain Digital Service India Vismart | WhatsApp Automation & Enterprise CRM</title>
-  <meta name="description" content="Official enterprise portal of Jain Digital Service India Vismart (UDYAM-MP-37-0000236). Providing autonomous WhatsApp AI Automation, CRM, and cloud messaging solutions.">
+  <title>Jain Digital Service India Vismart | Autonomous WhatsApp AI & Enterprise Automation</title>
+  <meta name="description" content="Official enterprise portal of Jain Digital Service India Vismart (UDYAM-MP-37-0000236). Autonomous WhatsApp AI Sales Agents, Omnichannel CRM, and Meta Cloud API Solutions.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
   <style>
+    /* ============================================================
+       00_MASTER_RULES: BASE RESET & FLUID AUTO-FIT SYSTEM
+       ============================================================ */
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
     :root {
-      --primary: #10b981;
-      --primary-hover: #059669;
-      --primary-glow: rgba(16, 185, 129, 0.25);
-      --meta-blue: #1877f2;
-      --bg-dark: #07090e;
-      --bg-card: #0d121d;
-      --bg-card-hover: #131a29;
-      --border: rgba(255, 255, 255, 0.08);
-      --border-focus: rgba(16, 185, 129, 0.4);
+      /* PAL-04 / PAL-05 Cyberpunk & Bio-Tech Fusion Tokens */
+      --bg-dark: #05070d;
+      --bg-surface: #0b101c;
+      --bg-surface-elevated: #111828;
+      --border-subtle: rgba(255, 255, 255, 0.08);
+      --border-accent: rgba(16, 185, 129, 0.35);
+      --border-glow: rgba(56, 189, 248, 0.45);
+      
+      --accent-emerald: #10b981;
+      --accent-emerald-glow: rgba(16, 185, 129, 0.35);
+      --accent-cyan: #06b6d4;
+      --accent-sky: #38bdf8;
+      --accent-purple: #8b5cf6;
+      --accent-meta: #1877f2;
+      
       --text-main: #f8fafc;
+      --text-secondary: #cbd5e1;
       --text-muted: #94a3b8;
+      
+      --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+      --font-mono: 'JetBrains Mono', monospace;
     }
+
     html, body {
       max-width: 100%;
       overflow-x: clip;
       background-color: var(--bg-dark);
       color: var(--text-main);
-      font-family: 'Plus Jakarta Sans', sans-serif;
+      font-family: var(--font-sans);
       scroll-behavior: smooth;
       line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
     }
+
+    /* Fluid Auto-Fit Container */
     .container {
       width: 100%;
-      max-width: min(100% - 2rem, 1200px);
+      max-width: min(100% - 2rem, 1240px);
       margin-inline: auto;
       padding-inline: clamp(1rem, 3.5vw, 2.5rem);
     }
-    
-    /* Header / Nav */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: rgba(7, 9, 14, 0.85);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-      padding-block: 1rem;
+
+    /* ============================================================
+       08-BACKGROUNDS: ANIMATED MESH GRADIENT & AURORA ORBS
+       ============================================================ */
+    .aurora-bg {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      overflow: hidden;
     }
-    .nav-inner {
+    .orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(130px);
+      opacity: 0.6;
+      animation: floatOrb 22s ease-in-out infinite alternate;
+    }
+    .orb-1 {
+      top: -15%;
+      left: -10%;
+      width: clamp(350px, 45vw, 650px);
+      height: clamp(350px, 45vw, 650px);
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.35) 0%, rgba(6, 182, 212, 0.15) 60%, transparent 80%);
+    }
+    .orb-2 {
+      top: 15%;
+      right: -15%;
+      width: clamp(380px, 50vw, 700px);
+      height: clamp(380px, 50vw, 700px);
+      background: radial-gradient(circle, rgba(139, 92, 246, 0.3) 0%, rgba(56, 189, 248, 0.15) 60%, transparent 80%);
+      animation-duration: 26s;
+      animation-delay: -5s;
+    }
+    .orb-3 {
+      bottom: 5%;
+      left: 20%;
+      width: clamp(300px, 40vw, 550px);
+      height: clamp(300px, 40vw, 550px);
+      background: radial-gradient(circle, rgba(24, 119, 242, 0.25) 0%, rgba(16, 185, 129, 0.12) 60%, transparent 80%);
+      animation-duration: 30s;
+      animation-delay: -10s;
+    }
+    @keyframes floatOrb {
+      0% { transform: translate(0, 0) scale(1); }
+      50% { transform: translate(60px, -40px) scale(1.12); }
+      100% { transform: translate(-40px, 50px) scale(0.95); }
+    }
+
+    /* Micro Noise Overlay */
+    .noise-grid {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 1;
+      background-image: radial-gradient(rgba(255, 255, 255, 0.06) 1px, transparent 1px);
+      background-size: 32px 32px;
+      opacity: 0.55;
+    }
+
+    .page-content {
+      position: relative;
+      z-index: 10;
+    }
+
+    /* ============================================================
+       02-NAVIGATION: FLOATING PILL ISLAND NAVBAR
+       ============================================================ */
+    .top-strip {
+      background: linear-gradient(90deg, #10b981, #06b6d4, #8b5cf6, #10b981);
+      background-size: 300% 100%;
+      animation: shimmerStrip 12s linear infinite;
+      padding: 0.45rem 1rem;
+      text-align: center;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #030712;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    @keyframes shimmerStrip {
+      0% { background-position: 0% 50%; }
+      100% { background-position: 300% 50%; }
+    }
+    .strip-badge {
+      background: #030712;
+      color: #34d399;
+      padding: 0.15rem 0.55rem;
+      border-radius: 999px;
+      font-family: var(--font-mono);
+      font-size: 0.72rem;
+      letter-spacing: 0.02em;
+    }
+
+    .navbar-wrapper {
+      position: sticky;
+      top: 1rem;
+      z-index: 100;
+      margin-bottom: 2rem;
+    }
+    .pill-navbar {
+      background: rgba(11, 16, 28, 0.75);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid rgba(255, 255, 255, 0.12);
+      border-radius: 9999px;
+      padding: 0.6rem 1.25rem;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 1.5rem;
+      box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 0 1px rgba(255, 255, 255, 0.05);
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .brand {
+    .pill-navbar:hover {
+      border-color: rgba(16, 185, 129, 0.3);
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.6), 0 0 30px rgba(16, 185, 129, 0.15);
+    }
+    .nav-brand {
       display: flex;
       align-items: center;
       gap: 0.75rem;
       text-decoration: none;
-      color: var(--text-main);
+      color: #fff;
     }
-    .brand-logo {
-      width: 40px;
-      height: 40px;
-      border-radius: 12px;
-      background: linear-gradient(135deg, #10b981, #06b6d4);
+    .brand-mark {
+      width: 36px;
+      height: 36px;
+      border-radius: 10px;
+      background: linear-gradient(135deg, #10b981 0%, #06b6d4 100%);
       display: grid;
       place-items: center;
       font-weight: 800;
-      font-size: 1.25rem;
-      color: #050b14;
-      box-shadow: 0 0 20px rgba(16, 185, 129, 0.35);
+      font-size: 1.15rem;
+      color: #05070d;
+      box-shadow: 0 0 15px rgba(16, 185, 129, 0.5);
     }
-    .brand-text h1 {
-      font-size: 1.05rem;
-      font-weight: 700;
+    .brand-heading {
+      font-size: 0.95rem;
+      font-weight: 800;
       letter-spacing: -0.01em;
       line-height: 1.2;
     }
-    .brand-text p {
-      font-size: 0.72rem;
-      color: var(--text-muted);
-      font-family: 'JetBrains Mono', monospace;
+    .brand-sub {
+      font-size: 0.68rem;
+      color: var(--accent-emerald);
+      font-family: var(--font-mono);
+      font-weight: 600;
     }
-    .nav-links {
+    .nav-menu {
       display: flex;
       align-items: center;
-      gap: 1.75rem;
+      gap: 1.5rem;
+      list-style: none;
     }
-    .nav-links a {
-      color: var(--text-muted);
+    .nav-menu a {
+      color: var(--text-secondary);
       text-decoration: none;
-      font-size: 0.875rem;
-      font-weight: 500;
+      font-size: 0.85rem;
+      font-weight: 600;
       transition: color 0.2s;
     }
-    .nav-links a:hover {
-      color: var(--primary);
-    }
-    .cta-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.5rem;
-      padding: 0.6rem 1.25rem;
-      background: var(--primary);
-      color: #050b14;
-      font-weight: 700;
-      font-size: 0.875rem;
-      border-radius: 9999px;
-      text-decoration: none;
-      transition: all 0.2s;
-      box-shadow: 0 4px 14px var(--primary-glow);
-    }
-    .cta-btn:hover {
-      background: var(--primary-hover);
-      transform: translateY(-1px);
+    .nav-menu a:hover {
+      color: var(--accent-emerald);
     }
 
-    /* Verification Badge Banner */
-    .verification-banner {
-      background: rgba(16, 185, 129, 0.08);
-      border-bottom: 1px solid rgba(16, 185, 129, 0.2);
-      padding: 0.5rem;
-      text-align: center;
-      font-size: 0.8rem;
-      color: #6ee7b7;
-      display: flex;
+    /* 06-BUTTONS: SHIMMER BUTTON (BTN-01) */
+    .shimmer-btn {
+      position: relative;
+      display: inline-flex;
       align-items: center;
       justify-content: center;
       gap: 0.5rem;
-      flex-wrap: wrap;
+      padding: 0.65rem 1.4rem;
+      border-radius: 9999px;
+      background: linear-gradient(135deg, #10b981 0%, #059669 100%);
+      color: #05070d;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-decoration: none;
+      box-shadow: 0 4px 20px rgba(16, 185, 129, 0.4);
+      overflow: hidden;
+      cursor: pointer;
+      border: none;
+      transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .badge-pill {
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid rgba(16, 185, 129, 0.3);
-      padding: 0.15rem 0.6rem;
-      border-radius: 999px;
-      font-family: 'JetBrains Mono', monospace;
-      font-weight: 600;
+    .shimmer-btn::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      transform: translateX(-100%);
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.45) 50%, transparent 100%);
+      animation: sweepShimmer 3s infinite;
+      pointer-events: none;
+    }
+    @keyframes sweepShimmer {
+      0% { transform: translateX(-100%); }
+      40%, 100% { transform: translateX(100%); }
+    }
+    .shimmer-btn:hover {
+      transform: translateY(-2px) scale(1.02);
+      box-shadow: 0 8px 25px rgba(16, 185, 129, 0.6);
+    }
+    .shimmer-btn:active {
+      transform: translateY(0) scale(0.98);
     }
 
-    /* Hero Section */
-    .hero {
-      padding-block: clamp(3.5rem, 6vw, 6.5rem);
-      position: relative;
+    /* ============================================================
+       03-HERO: MODERN SAAS ARCHITECTURE WITH 3D SPOTLIGHT
+       ============================================================ */
+    .hero-section {
+      padding-block: clamp(3rem, 6vw, 6rem) clamp(2.5rem, 4vw, 4.5rem);
       text-align: center;
     }
-    .hero-glow {
-      position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: clamp(300px, 60vw, 750px);
-      height: 350px;
-      background: radial-gradient(circle, rgba(16, 185, 129, 0.15) 0%, rgba(6, 182, 212, 0.08) 50%, transparent 80%);
-      pointer-events: none;
-      z-index: 0;
-    }
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 860px;
-      margin-inline: auto;
-    }
-    .meta-partner-tag {
+    .pill-tag {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.35rem 1rem;
+      padding: 0.4rem 1.1rem;
       border-radius: 999px;
       background: rgba(24, 119, 242, 0.1);
       border: 1px solid rgba(24, 119, 242, 0.3);
       color: #60a5fa;
       font-size: 0.8rem;
-      font-weight: 600;
+      font-weight: 700;
       margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(24, 119, 242, 0.15);
     }
-    .hero h2 {
-      font-size: clamp(2.2rem, 4.5vw + 1rem, 3.8rem);
+    .pill-tag svg {
+      width: 16px;
+      height: 16px;
+      fill: currentColor;
+    }
+    .hero-title {
+      font-size: clamp(2.2rem, 5vw + 1rem, 4.2rem);
       font-weight: 800;
-      letter-spacing: -0.025em;
+      letter-spacing: -0.03em;
       line-height: 1.15;
       margin-bottom: 1.25rem;
-      background: linear-gradient(135deg, #ffffff 30%, #94a3b8 100%);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero h2 span {
-      background: linear-gradient(135deg, #34d399, #38bdf8);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-    .hero p {
-      font-size: clamp(1rem, 1.2vw, 1.2rem);
-      color: var(--text-muted);
-      margin-bottom: 2rem;
-      max-width: 720px;
+      max-width: 960px;
       margin-inline: auto;
+    }
+    .text-gradient {
+      background: linear-gradient(135deg, #34d399 20%, #38bdf8 50%, #c084fc 90%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .hero-subtitle {
+      font-size: clamp(1rem, 1.2vw, 1.25rem);
+      color: var(--text-secondary);
+      max-width: 780px;
+      margin-inline: auto;
+      margin-bottom: 2.5rem;
+      line-height: 1.7;
     }
     .hero-actions {
       display: flex;
       align-items: center;
       justify-content: center;
-      gap: 1rem;
+      gap: 1.25rem;
       flex-wrap: wrap;
+      margin-bottom: 3.5rem;
     }
-    .btn-secondary {
+    .btn-outline {
       display: inline-flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.75rem 1.5rem;
-      background: rgba(255, 255, 255, 0.05);
-      border: 1px solid var(--border);
-      color: var(--text-main);
-      font-weight: 600;
-      font-size: 0.9rem;
+      padding: 0.7rem 1.6rem;
       border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.04);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.88rem;
       text-decoration: none;
-      transition: all 0.2s;
+      transition: all 0.2s ease;
     }
-    .btn-secondary:hover {
+    .btn-outline:hover {
       background: rgba(255, 255, 255, 0.1);
-      border-color: rgba(255, 255, 255, 0.2);
+      border-color: rgba(255, 255, 255, 0.3);
+      transform: translateY(-2px);
     }
 
-    /* Verification Card Block (MSME / Legal Transparency) */
-    .section {
-      padding-block: clamp(3rem, 5vw, 5rem);
-    }
-    .section-title {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    .section-title h3 {
-      font-size: clamp(1.6rem, 2.8vw, 2.4rem);
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 0.5rem;
-    }
-    .section-title p {
-      color: var(--text-muted);
-      font-size: 0.95rem;
-      max-width: 600px;
+    /* Live Trust Metric Ticker */
+    .trust-strip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: clamp(1.5rem, 4vw, 3.5rem);
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--border-subtle);
+      max-width: 860px;
       margin-inline: auto;
     }
-    .verification-card {
-      background: var(--bg-card);
-      border: 1px solid rgba(16, 185, 129, 0.25);
-      border-radius: 20px;
-      padding: clamp(1.5rem, 3vw, 2.5rem);
-      box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-      position: relative;
-      overflow: hidden;
+    .trust-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
     }
-    .verification-card::before {
+    .trust-number {
+      font-size: clamp(1.5rem, 2.5vw, 2.1rem);
+      font-weight: 800;
+      color: #fff;
+      font-family: var(--font-mono);
+      letter-spacing: -0.02em;
+    }
+    .trust-label {
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-top: 0.2rem;
+    }
+
+    /* ============================================================
+       05-CARDS & 10-EFFECTS: BORDER BEAM & 3D TILT CARDS
+       ============================================================ */
+    .section-wrap {
+      padding-block: clamp(3.5rem, 6vw, 6rem);
+    }
+    .section-header {
+      text-align: center;
+      margin-bottom: 3.5rem;
+    }
+    .section-tag {
+      font-size: 0.75rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent-emerald);
+      margin-bottom: 0.5rem;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 3.2vw, 2.75rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      margin-bottom: 0.75rem;
+    }
+    .section-desc {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      max-width: 640px;
+      margin-inline: auto;
+    }
+
+    /* Border Beam Card Container (EFFECT-04) */
+    .beam-card-container {
+      position: relative;
+      border-radius: 24px;
+      background: rgba(11, 16, 28, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      padding: clamp(1.5rem, 3.5vw, 2.75rem);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+      overflow: hidden;
+      backdrop-filter: blur(16px);
+    }
+    .beam-card-container::before {
       content: '';
       position: absolute;
       top: 0;
       left: 0;
       right: 0;
-      height: 3px;
-      background: linear-gradient(90deg, #10b981, #06b6d4, #1877f2);
+      height: 2px;
+      background: linear-gradient(90deg, transparent, #10b981, #06b6d4, #8b5cf6, transparent);
+      animation: laserTravel 6s linear infinite;
     }
-    .grid-details {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
-      gap: 1.5rem;
-      margin-top: 1.5rem;
-    }
-    .detail-item {
-      background: rgba(255, 255, 255, 0.02);
-      border: 1px solid var(--border);
-      border-radius: 12px;
-      padding: 1.25rem;
-    }
-    .detail-label {
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.05em;
-      color: var(--text-muted);
-      margin-bottom: 0.35rem;
-    }
-    .detail-value {
-      font-size: 1.05rem;
-      font-weight: 700;
-      color: #ffffff;
-      font-family: 'JetBrains Mono', monospace;
-      word-break: break-all;
-    }
-    .verified-mark {
-      color: #34d399;
-      display: inline-flex;
-      align-items: center;
-      gap: 0.3rem;
-      font-size: 0.8rem;
-      margin-top: 0.35rem;
-      font-family: 'Plus Jakarta Sans', sans-serif;
+    @keyframes laserTravel {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
     }
 
-    /* Features Grid */
-    .grid-features {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-      gap: clamp(1.25rem, 2.5vw, 2rem);
-    }
-    .feature-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: 16px;
-      padding: 2rem;
-      transition: all 0.25s ease;
-      position: relative;
-    }
-    .feature-card:hover {
-      border-color: var(--border-focus);
-      background: var(--bg-card-hover);
-      transform: translateY(-3px);
-    }
-    .feature-icon {
-      width: 48px;
-      height: 48px;
-      border-radius: 12px;
-      background: rgba(16, 185, 129, 0.12);
-      color: var(--primary);
-      display: grid;
-      place-items: center;
-      font-size: 1.4rem;
-      margin-bottom: 1.25rem;
-    }
-    .feature-card h4 {
-      font-size: 1.2rem;
-      font-weight: 700;
-      margin-bottom: 0.75rem;
-      color: #ffffff;
-    }
-    .feature-card p {
-      font-size: 0.9rem;
-      color: var(--text-muted);
-      line-height: 1.6;
-    }
-
-    /* Policy & Compliance Block (Meta Business Verification specific) */
-    .compliance-box {
-      background: rgba(24, 119, 242, 0.04);
-      border: 1px solid rgba(24, 119, 242, 0.2);
-      border-radius: 16px;
-      padding: 2rem;
-      margin-top: 3rem;
-    }
-    .compliance-box h4 {
-      color: #60a5fa;
-      font-size: 1.15rem;
-      margin-bottom: 1rem;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-    .compliance-list {
-      list-style: none;
+    /* Auto-fit Detail Grid */
+    .grid-autofit {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr));
-      gap: 1rem;
+      gap: 1.5rem;
+      margin-top: 2rem;
     }
-    .compliance-list li {
-      font-size: 0.875rem;
+    .glass-tile {
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.06);
+      border-radius: 16px;
+      padding: 1.4rem;
+      transition: all 0.25s ease;
+    }
+    .glass-tile:hover {
+      background: rgba(255, 255, 255, 0.04);
+      border-color: rgba(16, 185, 129, 0.35);
+      transform: translateY(-3px);
+    }
+    .tile-tag {
+      font-size: 0.72rem;
       color: var(--text-muted);
-      display: flex;
-      align-items: flex-start;
-      gap: 0.5rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      margin-bottom: 0.4rem;
     }
-    .compliance-list li::before {
-      content: '✓';
-      color: #38bdf8;
+    .tile-val {
+      font-size: 1.15rem;
       font-weight: 700;
+      color: #fff;
+      font-family: var(--font-mono);
+      word-break: break-all;
+    }
+    .tile-check {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.78rem;
+      color: #34d399;
+      margin-top: 0.45rem;
+      font-weight: 600;
     }
 
-    /* Footer */
+    /* Solution Bento Grid (04-SECTIONS) */
+    .bento-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 340px), 1fr));
+      gap: clamp(1.25rem, 2.5vw, 2rem);
+    }
+    .bento-card {
+      background: var(--bg-surface);
+      border: 1px solid var(--border-subtle);
+      border-radius: 20px;
+      padding: 2.25rem;
+      transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .bento-card:hover {
+      background: var(--bg-surface-elevated);
+      border-color: var(--border-accent);
+      transform: translateY(-4px);
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5), 0 0 25px rgba(16, 185, 129, 0.1);
+    }
+    .bento-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(16, 185, 129, 0.12);
+      color: var(--accent-emerald);
+      display: grid;
+      place-items: center;
+      font-size: 1.5rem;
+      margin-bottom: 1.5rem;
+      box-shadow: 0 0 20px rgba(16, 185, 129, 0.2);
+    }
+    .bento-card h4 {
+      font-size: 1.28rem;
+      font-weight: 700;
+      color: #fff;
+      margin-bottom: 0.75rem;
+    }
+    .bento-card p {
+      font-size: 0.92rem;
+      color: var(--text-secondary);
+      line-height: 1.65;
+    }
+
+    /* Compliance Banner */
+    .compliance-island {
+      background: rgba(24, 119, 242, 0.05);
+      border: 1px solid rgba(24, 119, 242, 0.25);
+      border-radius: 20px;
+      padding: clamp(1.5rem, 3vw, 2.5rem);
+      margin-top: 3.5rem;
+    }
+    .compliance-island h4 {
+      color: #60a5fa;
+      font-size: 1.25rem;
+      margin-bottom: 1.25rem;
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+    }
+    .compliance-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+      gap: 1.25rem;
+      list-style: none;
+    }
+    .compliance-grid li {
+      font-size: 0.9rem;
+      color: var(--text-secondary);
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+    }
+    .compliance-grid li svg {
+      width: 18px;
+      height: 18px;
+      color: #38bdf8;
+      flex-shrink: 0;
+      margin-top: 0.2rem;
+    }
+
+    /* ============================================================
+       18-FOOTER: METRIC & COMPLIANCE FOOTER
+       ============================================================ */
     footer {
-      border-top: 1px solid var(--border);
-      background: #04060a;
-      padding-block: 3.5rem 2rem;
-      font-size: 0.85rem;
+      border-top: 1px solid var(--border-subtle);
+      background: #030408;
+      padding-block: 4.5rem 2.5rem;
+      font-size: 0.88rem;
       color: var(--text-muted);
     }
-    .footer-grid {
+    .footer-layout {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
-      gap: 2.5rem;
-      margin-bottom: 3rem;
+      gap: 3rem;
+      margin-bottom: 3.5rem;
     }
     .footer-col h5 {
-      color: #ffffff;
+      color: #fff;
       font-size: 0.95rem;
       font-weight: 700;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
     }
     .footer-col ul {
       list-style: none;
       display: flex;
       flex-direction: column;
-      gap: 0.6rem;
+      gap: 0.75rem;
     }
     .footer-col a {
       color: var(--text-muted);
@@ -413,9 +594,9 @@
       transition: color 0.2s;
     }
     .footer-col a:hover {
-      color: var(--primary);
+      color: var(--accent-emerald);
     }
-    .footer-bottom {
+    .footer-base {
       border-top: 1px solid rgba(255, 255, 255, 0.05);
       padding-top: 2rem;
       display: flex;
@@ -423,11 +604,11 @@
       justify-content: space-between;
       flex-wrap: wrap;
       gap: 1rem;
-      font-size: 0.78rem;
+      font-size: 0.8rem;
     }
 
-    @media (max-width: 768px) {
-      .nav-links {
+    @media (max-width: 820px) {
+      .nav-menu {
         display: none;
       }
     }
@@ -435,239 +616,315 @@
 </head>
 <body>
 
-  <!-- Top Verification Notification -->
-  <div class="verification-banner">
-    <span>🛡️ Official Entity Portal:</span>
-    <strong>Jain Digital Service India Vismart</strong>
-    <span class="badge-pill">UDYAM-MP-37-0000236</span>
-    <span>• Meta Tech Provider & WhatsApp Business Cloud API Architecture</span>
+  <!-- Dynamic Animated Mesh Blobs -->
+  <div class="aurora-bg">
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+    <div class="orb orb-3"></div>
   </div>
+  <div class="noise-grid"></div>
 
-  <!-- Header -->
-  <header>
-    <div class="container nav-inner">
-      <a href="/company.html" class="brand">
-        <div class="brand-logo">V</div>
-        <div class="brand-text">
-          <h1>Jain Digital Service India Vismart</h1>
-          <p>UDYAM-MP-37-0000236</p>
-        </div>
-      </a>
-      <nav class="nav-links">
-        <a href="#about">About Entity</a>
-        <a href="#services">WhatsApp Solutions</a>
-        <a href="#compliance">Meta Compliance</a>
-        <a href="/privacy.html">Privacy Policy</a>
-        <a href="/terms.html">Terms of Service</a>
-      </nav>
-      <a href="https://wacrm-eta-dusky.vercel.app/login" class="cta-btn">
-        <span>Launch App</span>
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
-      </a>
+  <div class="page-content">
+
+    <!-- Top Verification Bar -->
+    <div class="top-strip">
+      <span>🛡️ Official Entity Portal:</span>
+      <strong>Jain Digital Service India Vismart</strong>
+      <span class="strip-badge">UDYAM-MP-37-0000236</span>
+      <span>• Meta Tech Provider & WhatsApp Business Cloud API Architecture</span>
     </div>
-  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <div class="hero-glow"></div>
-    <div class="container hero-content">
-      <div class="meta-partner-tag">
-        <svg width="16" height="16" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-        <span>Meta Cloud API & Embedded Signup Provider</span>
-      </div>
-      <h2>Enterprise WhatsApp Automation by <span>Jain Digital Service India Vismart</span></h2>
-      <p>
-        We build enterprise-grade autonomous sales agents, omnichannel messaging routing, and automated business workflows powered by the official WhatsApp Cloud API for modern businesses across India.
-      </p>
-      <div class="hero-actions">
-        <a href="https://wacrm-eta-dusky.vercel.app/login" class="cta-btn" style="padding: 0.85rem 2rem; font-size: 1rem;">
-          Access WhatsApp CRM
-        </a>
-        <a href="/privacy.html" class="btn-secondary">
-          Review Privacy Policy
-        </a>
-      </div>
-    </div>
-  </section>
-
-  <!-- Government & Enterprise Registration Section (Meta Verification Anchor) -->
-  <section id="about" class="section">
-    <div class="container">
-      <div class="section-title">
-        <h3>Verified Legal Entity & Credentials</h3>
-        <p>Complete regulatory information verified under the Ministry of Micro, Small and Medium Enterprises (MSME), Government of India.</p>
-      </div>
-
-      <div class="verification-card">
-        <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid var(--border); padding-bottom: 1.25rem;">
+    <!-- Floating Pill Island Navbar (NAV-03) -->
+    <div class="container navbar-wrapper">
+      <nav class="pill-navbar">
+        <a href="/company.html" class="nav-brand">
+          <div class="brand-mark">V</div>
           <div>
-            <h4 style="font-size: 1.35rem; color: #fff;">Government of India MSME Registration</h4>
-            <p style="color: var(--text-muted); font-size: 0.85rem;">Official verification parameters for Meta Business Portfolio audit</p>
+            <div class="brand-heading">Jain Digital Service India Vismart</div>
+            <div class="brand-sub">UDYAM-MP-37-0000236</div>
           </div>
-          <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.35rem 0.9rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700;">
-            ✓ Active & Verified Entity
-          </span>
-        </div>
+        </a>
 
-        <div class="grid-details">
-          <div class="detail-item">
-            <div class="detail-label">Legal Legal Business Name</div>
-            <div class="detail-value">Jain Digital Service India Vismart</div>
-            <div class="verified-mark">✓ Matches Meta Business Registration</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="detail-label">Udyam Registration Number</div>
-            <div class="detail-value">UDYAM-MP-37-0000236</div>
-            <div class="verified-mark">✓ Govt of India Registered</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="detail-label">Promoter / Authorized Officer</div>
-            <div class="detail-value">Mohit P Jain</div>
-            <div class="verified-mark">✓ Primary Administrator</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="detail-label">Official Registered Domain</div>
-            <div class="detail-value">jaindigitalserviceindiavismart.vercel.app</div>
-            <div class="verified-mark">✓ SSL Secured Cloud Instance</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="detail-label">Primary Business Activity</div>
-            <div class="detail-value">Information Technology & Software Services</div>
-            <div class="verified-mark">✓ Cloud CRM & WhatsApp Automation</div>
-          </div>
-
-          <div class="detail-item">
-            <div class="detail-label">Official Communication Contact</div>
-            <div class="detail-value">mohit12836@gmail.com</div>
-            <div class="verified-mark">✓ Verified Business Email</div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
-
-  <!-- WhatsApp Automation Services Section -->
-  <section id="services" class="section" style="background: rgba(255, 255, 255, 0.01);">
-    <div class="container">
-      <div class="section-title">
-        <h3>WhatsApp Automation & Cloud Solutions</h3>
-        <p>Built for seamless 24/7 business operations using official Meta WhatsApp Cloud API endpoints.</p>
-      </div>
-
-      <div class="grid-features">
-        <div class="feature-card">
-          <div class="feature-icon">⚡</div>
-          <h4>1-Click Embedded Onboarding</h4>
-          <p>Seamless Facebook Login integration allows businesses to link their WhatsApp Business numbers instantly without manual API token generation.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🤖</div>
-          <h4>Autonomous AI Sales Closers</h4>
-          <p>Multi-turn conversational AI agents programmed to answer product queries, compute custom pricing, and guide clients to instant conversions.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">👥</div>
-          <h4>Multi-User Team CRM</h4>
-          <p>Role-based access control with Owners, Admins, and Sales Agents so your entire team can collaborate on customer conversations with zero collisions.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">📢</div>
-          <h4>Broadcast & Follow-up Engine</h4>
-          <p>Compliant template message distribution with automated follow-up scheduling, read tracking, and instant CRM synchronization.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">💳</div>
-          <h4>Instant Payment Links</h4>
-          <p>Dynamic Razorpay integration to generate and dispatch payment links directly inside WhatsApp chat threads for frictionless booking.</p>
-        </div>
-
-        <div class="feature-card">
-          <div class="feature-icon">🔒</div>
-          <h4>AES-256 Cloud Security</h4>
-          <p>Enterprise data isolation with Row-Level Security (RLS) on PostgreSQL and military-grade encryption for all API tokens and client messages.</p>
-        </div>
-      </div>
-
-      <!-- Meta Compliance Guarantee Box -->
-      <div id="compliance" class="compliance-box">
-        <h4>
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-          Meta WhatsApp Cloud API Compliance & Ethics Guarantee
-        </h4>
-        <ul class="compliance-list">
-          <li>100% adherence to Meta WhatsApp Business Messaging Policy & Terms.</li>
-          <li>Explicit opt-in protocols enforced for all customer outbound messaging.</li>
-          <li>Opt-out & Unsubscribe keywords (STOP, UNSUBSCRIBE) honored instantly.</li>
-          <li>Zero scraping, no unauthorized unofficial third-party wrappers.</li>
-          <li>End-to-end data encryption with complete user access deletion controls.</li>
-          <li>Strict audit logging on all webhook transmissions and token rotations.</li>
+        <ul class="nav-menu">
+          <li><a href="#about">Legal Entity</a></li>
+          <li><a href="#services">WhatsApp Solutions</a></li>
+          <li><a href="#compliance">Meta Compliance</a></li>
+          <li><a href="/privacy.html">Privacy Policy</a></li>
+          <li><a href="/terms.html">Terms</a></li>
         </ul>
-      </div>
-    </div>
-  </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <div class="footer-grid">
-        <div class="footer-col" style="grid-column: span 1.5;">
-          <div class="brand" style="margin-bottom: 1rem;">
-            <div class="brand-logo" style="width: 32px; height: 32px; font-size: 1rem;">V</div>
-            <strong style="color: #fff; font-size: 1rem;">Jain Digital Service India Vismart</strong>
+        <a href="https://jaindigitalserviceindiavismart.vercel.app/login" class="shimmer-btn">
+          <span>Launch CRM</span>
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </nav>
+    </div>
+
+    <!-- Hero Section with Motion & Typography Tokens -->
+    <section class="hero-section">
+      <div class="container">
+        <div class="pill-tag">
+          <svg viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          <span>Official Meta Cloud API & Embedded Signup Provider</span>
+        </div>
+
+        <h1 class="hero-title">
+          Enterprise WhatsApp Automation by <span class="text-gradient">Jain Digital Service India Vismart</span>
+        </h1>
+
+        <p class="hero-subtitle">
+          We engineer autonomous AI sales employees, omnichannel multi-user WhatsApp CRMs, and broadcast engines powered by the official Meta WhatsApp Cloud API for fast-growing businesses.
+        </p>
+
+        <div class="hero-actions">
+          <a href="https://jaindigitalserviceindiavismart.vercel.app/login" class="shimmer-btn" style="padding: 0.85rem 2rem; font-size: 0.95rem;">
+            <span>Open WhatsApp CRM Platform</span>
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+          </a>
+          <a href="/privacy.html" class="btn-outline">
+            Review Privacy Policy
+          </a>
+        </div>
+
+        <!-- Trust Metrics -->
+        <div class="trust-strip">
+          <div class="trust-item">
+            <span class="trust-number">99.9%</span>
+            <span class="trust-label">API Uptime SLA</span>
           </div>
-          <p style="font-size: 0.85rem; line-height: 1.6; margin-bottom: 1rem;">
-            Enterprise provider of WhatsApp Business automation, CRM solutions, and autonomous conversational intelligence systems.
+          <div class="trust-item">
+            <span class="trust-number">&lt; 1.2s</span>
+            <span class="trust-label">AI Response Latency</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-number">100%</span>
+            <span class="trust-label">Official Meta Compliance</span>
+          </div>
+          <div class="trust-item">
+            <span class="trust-number">AES-256</span>
+            <span class="trust-label">Token Encryption</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Master Legal Entity & Registration Verification Card (Border Beam - EFFECT-04) -->
+    <section id="about" class="section-wrap">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Corporate Transparency</div>
+          <h2 class="section-title">Verified Legal Entity & Governance</h2>
+          <p class="section-desc">
+            Complete regulatory disclosures registered under the Ministry of Micro, Small and Medium Enterprises (MSME), Government of India.
           </p>
-          <p style="font-family: 'JetBrains Mono', monospace; font-size: 0.78rem; color: #6ee7b7;">
-            Udyam Reg: UDYAM-MP-37-0000236
+        </div>
+
+        <div class="beam-card-container">
+          <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 1rem; border-bottom: 1px solid var(--border-subtle); padding-bottom: 1.5rem;">
+            <div>
+              <h3 style="font-size: 1.4rem; color: #fff; font-weight: 800;">Government of India MSME Certificate Record</h3>
+              <p style="color: var(--text-muted); font-size: 0.88rem; margin-top: 0.25rem;">Meta Business Portfolio Verification Parameters & Audit Baseline</p>
+            </div>
+            <span style="background: rgba(16, 185, 129, 0.15); color: #34d399; border: 1px solid rgba(16, 185, 129, 0.3); padding: 0.4rem 1rem; border-radius: 999px; font-size: 0.8rem; font-weight: 700; display: inline-flex; align-items: center; gap: 0.4rem;">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              Active & Verified Entity
+            </span>
+          </div>
+
+          <div class="grid-autofit">
+            <div class="glass-tile">
+              <div class="tile-tag">Legal Business Name</div>
+              <div class="tile-val">Jain Digital Service India Vismart</div>
+              <div class="tile-check">✓ Matches Meta Business Name</div>
+            </div>
+
+            <div class="glass-tile">
+              <div class="tile-tag">Udyam Registration Number</div>
+              <div class="tile-val">UDYAM-MP-37-0000236</div>
+              <div class="tile-check">✓ Ministry of MSME Verified</div>
+            </div>
+
+            <div class="glass-tile">
+              <div class="tile-tag">Promoter / Authorized Officer</div>
+              <div class="tile-val">Mohit P Jain</div>
+              <div class="tile-check">✓ Primary System Administrator</div>
+            </div>
+
+            <div class="glass-tile">
+              <div class="tile-tag">Official Registered Domain</div>
+              <div class="tile-val">jaindigitalserviceindiavismart.vercel.app</div>
+              <div class="tile-check">✓ SSL Encrypted Primary Instance</div>
+            </div>
+
+            <div class="glass-tile">
+              <div class="tile-tag">Primary Activity</div>
+              <div class="tile-val">Information Technology & Software Services</div>
+              <div class="tile-check">✓ Cloud CRM & WhatsApp Automation</div>
+            </div>
+
+            <div class="glass-tile">
+              <div class="tile-tag">Official Support Email</div>
+              <div class="tile-val">mohit12836@gmail.com</div>
+              <div class="tile-check">✓ Verified Corporate Address</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Solutions Bento Grid (04-SECTIONS) -->
+    <section id="services" class="section-wrap" style="background: rgba(255, 255, 255, 0.01);">
+      <div class="container">
+        <div class="section-header">
+          <div class="section-tag">Platform Capabilities</div>
+          <h2 class="section-title">Autonomous WhatsApp Business Infrastructure</h2>
+          <p class="section-desc">
+            Directly connected to Meta Graph API v21.0 Cloud endpoints for maximum reliability, speed, and conversion.
           </p>
         </div>
 
-        <div class="footer-col">
-          <h5>Platform</h5>
-          <ul>
-            <li><a href="https://wacrm-eta-dusky.vercel.app/login">Login to CRM</a></li>
-            <li><a href="https://wacrm-eta-dusky.vercel.app/signup">Create Account</a></li>
-            <li><a href="#services">WhatsApp Automation</a></li>
-            <li><a href="#about">Legal Entity</a></li>
-          </ul>
+        <div class="bento-grid">
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">⚡</div>
+              <h4>1-Click Embedded Onboarding</h4>
+              <p>Meta Co-Branded Facebook Login dialog enables your clients to link their WhatsApp Business phone numbers in under 10 seconds without copying tokens.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">🤖</div>
+              <h4>Autonomous AI Sales Employees</h4>
+              <p>Goal-driven LLM agents trained on your specific product pricing, catalogs, and FAQs to negotiate, compute subsidies, and close deals 24/7.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">👥</div>
+              <h4>Multi-User Team CRM</h4>
+              <p>Complete role isolation with Owners, Admins, and Sales Agents so large sales departments can handle customer queues with zero collision.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">📢</div>
+              <h4>Broadcast & Follow-up Engine</h4>
+              <p>Compliant template message distribution with automated follow-up sequences, delivery receipt tracking, and lead score progression.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">💳</div>
+              <h4>Instant Payment Gateways</h4>
+              <p>Dynamic Razorpay payment links generated on-the-fly inside chat threads, letting customers pay token amounts without leaving WhatsApp.</p>
+            </div>
+          </div>
+
+          <div class="bento-card">
+            <div>
+              <div class="bento-icon">🔒</div>
+              <h4>AES-256 Enterprise Privacy</h4>
+              <p>End-to-end data isolation with PostgreSQL Row-Level Security (RLS) and military-grade encryption for all API tokens and client messages.</p>
+            </div>
+          </div>
         </div>
 
-        <div class="footer-col">
-          <h5>Legal & Compliance</h5>
-          <ul>
-            <li><a href="/privacy.html">Privacy Policy</a></li>
-            <li><a href="/terms.html">Terms of Service</a></li>
-            <li><a href="/company.html">Company Verification</a></li>
-            <li><a href="https://developers.facebook.com" target="_blank">Meta for Developers</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h5>Authorized Support</h5>
-          <ul>
-            <li><strong>Entity:</strong> Jain Digital Service India Vismart</li>
-            <li><strong>Officer:</strong> Mohit P Jain</li>
-            <li><strong>Email:</strong> mohit12836@gmail.com</li>
-            <li><strong>Jurisdiction:</strong> Madhya Pradesh, India</li>
+        <!-- Meta Compliance Island -->
+        <div id="compliance" class="compliance-island">
+          <h4>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Meta WhatsApp Cloud API Compliance & Ethics Guarantee
+          </h4>
+          <ul class="compliance-grid">
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>100% adherence to Meta WhatsApp Business Messaging Policy.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Mandatory recipient opt-in protocols enforced for all outbound traffic.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Opt-out keywords (STOP, UNSUBSCRIBE) processed instantaneously.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Zero scraping, no unauthorized unofficial third-party wrappers.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Full data rights with self-serve permanent data deletion tools.</span>
+            </li>
+            <li>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"><polyline points="20 6 9 17 4 12"/></svg>
+              <span>Strict webhook delivery logs and automated token rotation alerts.</span>
+            </li>
           </ul>
         </div>
       </div>
+    </section>
 
-      <div class="footer-bottom">
-        <p>&copy; 2026 Jain Digital Service India Vismart (UDYAM-MP-37-0000236). All rights reserved.</p>
-        <p>Built exclusively on the Official Meta WhatsApp Cloud API.</p>
+    <!-- Footer (18-FOOTER) -->
+    <footer>
+      <div class="container">
+        <div class="footer-layout">
+          <div class="footer-col" style="grid-column: span 1.5;">
+            <div class="nav-brand" style="margin-bottom: 1rem;">
+              <div class="brand-mark" style="width: 32px; height: 32px; font-size: 1rem;">V</div>
+              <strong style="color: #fff; font-size: 1rem;">Jain Digital Service India Vismart</strong>
+            </div>
+            <p style="font-size: 0.88rem; line-height: 1.65; margin-bottom: 1rem;">
+              Autonomous WhatsApp Business AI Automation, multi-user CRM suite, and cloud intelligence platform.
+            </p>
+            <p style="font-family: var(--font-mono); font-size: 0.8rem; color: #6ee7b7;">
+              Udyam Registration: UDYAM-MP-37-0000236
+            </p>
+          </div>
+
+          <div class="footer-col">
+            <h5>Product & App</h5>
+            <ul>
+              <li><a href="https://jaindigitalserviceindiavismart.vercel.app/login">Login to Dashboard</a></li>
+              <li><a href="https://jaindigitalserviceindiavismart.vercel.app/signup">Create Account</a></li>
+              <li><a href="#services">WhatsApp Solutions</a></li>
+              <li><a href="#about">Corporate Verification</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Legal & Policies</h5>
+            <ul>
+              <li><a href="/privacy.html">Privacy Policy</a></li>
+              <li><a href="/terms.html">Terms of Service</a></li>
+              <li><a href="/company.html">Entity Information</a></li>
+              <li><a href="https://developers.facebook.com" target="_blank">Meta for Developers</a></li>
+            </ul>
+          </div>
+
+          <div class="footer-col">
+            <h5>Authorized Contact</h5>
+            <ul>
+              <li><strong>Entity:</strong> Jain Digital Service India Vismart</li>
+              <li><strong>Promoter:</strong> Mohit P Jain</li>
+              <li><strong>Email:</strong> mohit12836@gmail.com</li>
+              <li><strong>Jurisdiction:</strong> Madhya Pradesh, India</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-base">
+          <p>&copy; 2026 Jain Digital Service India Vismart (UDYAM-MP-37-0000236). All rights reserved.</p>
+          <p>Architected exclusively on the Official Meta WhatsApp Cloud API.</p>
+        </div>
       </div>
-    </div>
-  </footer>
+    </footer>
+
+  </div>
 
 </body>
 </html>
