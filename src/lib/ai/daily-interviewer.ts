@@ -1,8 +1,8 @@
-import { createClient } from "@supabase/supabase-js";
+import { createClient, type SupabaseClient } from "@supabase/supabase-js";
 
 // Lazy admin client
-let _adminClient: any = null;
-function getAdminClient() {
+let _adminClient: SupabaseClient | null = null;
+function getAdminClient(): SupabaseClient {
   if (!_adminClient) {
     _adminClient = createClient(
       process.env.NEXT_PUBLIC_SUPABASE_URL!,

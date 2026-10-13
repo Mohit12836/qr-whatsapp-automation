@@ -5,8 +5,6 @@ import {
   Sparkles,
   Bot,
   X,
-  ChevronUp,
-  ChevronDown,
   CheckCircle2,
   AlertTriangle,
   Send,
@@ -14,8 +12,7 @@ import {
   PhoneCall,
   ArrowRight,
   TrendingUp,
-  HelpCircle,
-  Lightbulb
+  Lightbulb,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import Link from 'next/link';
@@ -182,7 +179,7 @@ export function AISuccessAssistant() {
                       {item.suggestedAnswer && !isDone && (
                         <div className="p-2 rounded-lg bg-black/40 border border-white/5 mb-2.5">
                           <p className="text-[10px] text-emerald-400 font-bold uppercase mb-0.5">Proposed AI Reply:</p>
-                          <p className="text-[11px] text-slate-300 italic">"{item.suggestedAnswer}"</p>
+                          <p className="text-[11px] text-slate-300 italic">&ldquo;{item.suggestedAnswer}&rdquo;</p>
                         </div>
                       )}
 

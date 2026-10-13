@@ -55,6 +55,7 @@ export function PresenceHeartbeat() {
       // in the same frame. The 30s interval is never affected.
       const t = Date.now();
       if (t - lastBeatAt < 1_000) return;
+      lastBeatAt = t;
       try {
         const { error } = await supabase.rpc("touch_presence", {
           p_status: currentStatus(),
@@ -63,7 +64,7 @@ export function PresenceHeartbeat() {
           // Non-fatal: presence is best-effort.
           console.warn("[PresenceHeartbeat] touch_presence failed:", error.message);
         }
-      } catch (err) {
+      } catch {
         // Network offline or transient fetch failure — safe to ignore
       }
     };

@@ -7,6 +7,12 @@ import { buildSystemPrompt } from './defaults'
 import { buildHandoffSummary } from './handoff'
 import { logAiUsage } from './usage'
 import { latestUserMessage } from './query'
+import { loadTenantPolicyResult } from './policy-service'
+import {
+  evaluateActionPolicy,
+  evaluateGeneratedResponseSafety,
+  type TrustedServerContext,
+} from './policy-guard'
 import {
   engineSendText,
   loadAccountMetaCredentials,
@@ -177,7 +183,77 @@ export async function dispatchInboundToAiReply(
       if (config.handoffAgentId && !conv.assigned_agent_id) {
         update.assigned_agent_id = config.handoffAgentId
       }
-      await db.from('conversations').update(update).eq('id', conversationId)
+      await persistConversationHandoff(db, conversationId, update)
+      return
+    }
+
+    // ============================================================
+    // DETERMINISTIC AI POLICY GUARD (P0.4B.2B.1 & P0.4B.2B.2)
+    // Server-Side Action & Response Safety Boundary Checks
+    // ============================================================
+    const context: TrustedServerContext = {
+      accountId,
+      userId: configOwnerUserId,
+      source: 'whatsapp_inbound',
+    }
+
+    // 1. Load tenant policy with fail-closed DB outage handling
+    const policyResult = await loadTenantPolicyResult(db, accountId)
+    if (!policyResult.success) {
+      console.error(
+        `[ai auto-reply] Policy check failed for account ${accountId}: ${policyResult.error}. Failing closed into human handoff.`,
+      )
+      const update: Record<string, unknown> = {
+        ai_autoreply_disabled: true,
+        ai_handoff_summary: `Policy Guard unavailable (${policyResult.errorCode}) — thread routed to human agent for safety.`,
+      }
+      if (config.handoffAgentId && !conv.assigned_agent_id) {
+        update.assigned_agent_id = config.handoffAgentId
+      }
+      await persistConversationHandoff(db, conversationId, update)
+      return
+    }
+
+    const policy = policyResult.policy
+
+    // 2. Evaluate general action policy for conversational message
+    const actionEval = evaluateActionPolicy(context, policy, {
+      actionType: 'read_knowledge',
+    })
+
+    if (actionEval.decision !== 'ALLOW' || actionEval.requiresHumanReview) {
+      console.warn(
+        `[ai auto-reply] Outbound action policy blocked for account ${accountId}: ${actionEval.reasonCode} - ${actionEval.message}`,
+      )
+      const update: Record<string, unknown> = {
+        ai_autoreply_disabled: true,
+        ai_handoff_summary: `Policy Guard triggered handoff (${actionEval.reasonCode}): ${actionEval.message}`,
+      }
+      if (config.handoffAgentId && !conv.assigned_agent_id) {
+        update.assigned_agent_id = config.handoffAgentId
+      }
+      await persistConversationHandoff(db, conversationId, update)
+      return
+    }
+
+    // 3. Evaluate generated model text for unauthorized commitments (discounts, refunds, payments, unverified pricing)
+    const responseEval = evaluateGeneratedResponseSafety(context, policy, {
+      text,
+      retrievedKnowledge: knowledge,
+    })
+
+    if (responseEval.decision !== 'ALLOW' || responseEval.requiresHumanReview) {
+      console.warn(
+        `[ai auto-reply] Generated response blocked by safety guard for account ${accountId}: ${responseEval.reasonCode} - ${responseEval.message}`,
+      )
+      const update: Record<string, unknown> = {
+        ai_autoreply_disabled: true,
+        ai_handoff_summary: `Response Safety Guard triggered handoff (${responseEval.reasonCode}): ${responseEval.message}`,
+      }
+      if (config.handoffAgentId && !conv.assigned_agent_id) {
+        update.assigned_agent_id = config.handoffAgentId
+      }
+      await persistConversationHandoff(db, conversationId, update)
       return
     }
 
@@ -240,3 +316,44 @@ async function showTypingIndicator(
     console.warn('[ai auto-reply] typing indicator failed (continuing):', err)
   }
 }
+
+/**
+ * Persist conversation handoff with retries and fail-closed state verification (P0.4B.2B.2).
+ * Guarantees that Supabase update errors are caught, retried, and logged.
+ */
+export async function persistConversationHandoff(
+  db: ReturnType<typeof supabaseAdmin>,
+  conversationId: string,
+  update: Record<string, unknown>,
+  maxRetries = 2,
+): Promise<{ success: boolean; error?: unknown }> {
+  let lastError: unknown = null
+  for (let attempt = 1; attempt <= maxRetries + 1; attempt++) {
+    try {
+      const { error } = await db
+        .from('conversations')
+        .update(update)
+        .eq('id', conversationId)
+      if (!error) {
+        return { success: true }
+      }
+      lastError = error
+      console.warn(
+        `[ai auto-reply] Handoff persistence attempt ${attempt} failed:`,
+        error,
+      )
+    } catch (err) {
+      lastError = err
+      console.warn(
+        `[ai auto-reply] Handoff persistence attempt ${attempt} threw:`,
+        err,
+      )
+    }
+  }
+  console.error(
+    `[ai auto-reply] CRITICAL: Failed to persist conversation handoff state for ${conversationId} after ${maxRetries + 1} attempts.`,
+    lastError,
+  )
+  return { success: false, error: lastError }
+}
+

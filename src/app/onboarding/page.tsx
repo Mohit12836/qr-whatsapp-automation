@@ -1,8 +1,9 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
+import { createClient } from '@/lib/supabase/client';
 import {
   Bot,
   Sparkles,
@@ -35,6 +36,9 @@ import {
   PhoneCall,
   Loader2,
   Send,
+  Mail,
+  X,
+  User,
 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
@@ -103,6 +107,60 @@ export default function OnboardingPage() {
   const [waMethod, setWaMethod] = useState<'qr' | 'cloud_api'>('qr');
   const [waConnected, setWaConnected] = useState(false);
 
+  // Server Provisioning & Auth State
+  const [idempotencyKey, setIdempotencyKey] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState<string | null>(null);
+  const [authModalOpen, setAuthModalOpen] = useState(false);
+  const [authMode, setAuthMode] = useState<'signup' | 'signin'>('signup');
+  const [authEmail, setAuthEmail] = useState('');
+  const [authPassword, setAuthPassword] = useState('');
+  const [authError, setAuthError] = useState<string | null>(null);
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
+
+  // Load draft on initial mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem('vismart_onboarding_draft');
+      if (saved) {
+        const d = JSON.parse(saved);
+        if (d.businessName) setBusinessName(d.businessName);
+        if (d.category) setCategory(d.category);
+        if (d.city) setCity(d.city);
+        if (d.phone) setPhone(d.phone);
+        if (d.selectedGoals) setSelectedGoals(d.selectedGoals);
+        if (d.customQaList) setCustomQaList(d.customQaList);
+        if (d.idempotencyKey) setIdempotencyKey(d.idempotencyKey);
+        if (d.step && d.step > 1) setStep(d.step as Step);
+      } else {
+        setIdempotencyKey(`onboard_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`);
+      }
+    } catch {
+      setIdempotencyKey(`onboard_${Date.now()}_${Math.random().toString(36).substring(2, 7)}`);
+    }
+  }, []);
+
+  // Save draft on state changes
+  useEffect(() => {
+    try {
+      if (businessName || customQaList.length > 0) {
+        const draft = {
+          businessName,
+          category,
+          city,
+          phone,
+          selectedGoals,
+          customQaList,
+          idempotencyKey,
+          step,
+        };
+        localStorage.setItem('vismart_onboarding_draft', JSON.stringify(draft));
+      }
+    } catch {
+      // Ignore storage write issues
+    }
+  }, [businessName, category, city, phone, selectedGoals, customQaList, idempotencyKey, step]);
+
   const toggleGoal = (goal: string) => {
     if (selectedGoals.includes(goal)) {
       setSelectedGoals(selectedGoals.filter((g) => g !== goal));
@@ -116,6 +174,106 @@ export default function OnboardingPage() {
     setCustomQaList([...customQaList, { q: newQ, a: newA }]);
     setNewQ('');
     setNewA('');
+  };
+
+  const executeProvisioning = async () => {
+    setIsSubmitting(true);
+    setSubmitError(null);
+
+    try {
+      const categoryDetails = {
+        solarCapacity,
+        clinicOpdTiming,
+        coachingTargetExam,
+        realEstateType,
+        retailProducts,
+      };
+
+      const res = await fetch('/api/onboarding/complete', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          businessName: businessName || 'My Business',
+          industry: category,
+          city,
+          phone,
+          goals: selectedGoals,
+          knowledgeItems: customQaList,
+          categoryDetails,
+          idempotencyKey,
+        }),
+      });
+
+      const data = await res.json();
+
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to complete workspace onboarding.');
+      }
+
+      // Clear draft on verified completion
+      try {
+        localStorage.removeItem('vismart_onboarding_draft');
+      } catch {}
+
+      router.push('/dashboard');
+    } catch (err: any) {
+      setSubmitError(err.message || 'An unexpected error occurred. Please try again.');
+      setIsSubmitting(false);
+    }
+  };
+
+  const handleLaunch = async () => {
+    setSubmitError(null);
+    const supabase = createClient();
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
+    if (!user) {
+      setAuthModalOpen(true);
+      return;
+    }
+
+    await executeProvisioning();
+  };
+
+  const handleAuthSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setAuthError(null);
+    setIsAuthenticating(true);
+
+    const supabase = createClient();
+
+    try {
+      if (authMode === 'signup') {
+        const { data, error } = await supabase.auth.signUp({
+          email: authEmail.trim(),
+          password: authPassword,
+          options: {
+            data: {
+              full_name: businessName || 'Business Owner',
+            },
+          },
+        });
+
+        if (error) throw error;
+        if (!data.user) throw new Error('Signup failed. Please try again.');
+      } else {
+        const { data, error } = await supabase.auth.signInWithPassword({
+          email: authEmail.trim(),
+          password: authPassword,
+        });
+
+        if (error) throw error;
+        if (!data.user) throw new Error('Sign in failed. Please check your credentials.');
+      }
+
+      setAuthModalOpen(false);
+      await executeProvisioning();
+    } catch (err: any) {
+      setAuthError(err.message || 'Authentication failed');
+      setIsAuthenticating(false);
+    }
   };
 
   const handleSendTestMessage = () => {
@@ -944,16 +1102,140 @@ export default function OnboardingPage() {
               </div>
             </div>
 
+            {submitError && (
+              <div className="p-3.5 rounded-2xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center justify-center gap-2 max-w-md mx-auto">
+                <AlertTriangle className="h-4 w-4 shrink-0 text-rose-400" />
+                <span>{submitError}</span>
+              </div>
+            )}
+
             <div className="pt-4 flex justify-center">
               <Button
                 size="lg"
-                onClick={() => router.push('/dashboard')}
-                className="h-13 px-10 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 rounded-2xl text-base font-extrabold shadow-[0_0_35px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all gap-2 animate-pulse-glow"
+                disabled={isSubmitting}
+                onClick={handleLaunch}
+                className="h-13 px-10 bg-gradient-to-r from-emerald-400 via-teal-400 to-cyan-400 text-slate-950 rounded-2xl text-base font-extrabold shadow-[0_0_35px_rgba(16,185,129,0.4)] hover:scale-105 active:scale-95 transition-all gap-2 animate-pulse-glow disabled:opacity-50"
               >
-                🚀 Activate My AI Employee on WhatsApp
+                {isSubmitting ? (
+                  <>
+                    <Loader2 className="h-5 w-5 animate-spin" /> Provisioning AI Employee...
+                  </>
+                ) : (
+                  <>🚀 Activate My AI Employee on WhatsApp</>
+                )}
               </Button>
             </div>
           </Card>
+        )}
+
+        {/* ============================================================
+            QUICK AUTH MODAL (Sign Up / Sign In without losing draft)
+            ============================================================ */}
+        {authModalOpen && (
+          <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4">
+            <div className="w-full max-w-md bg-slate-950 border border-emerald-500/30 rounded-3xl p-6 sm:p-8 text-slate-100 shadow-[0_0_50px_rgba(16,185,129,0.2)] relative animate-in fade-in zoom-in-95">
+              <button
+                onClick={() => setAuthModalOpen(false)}
+                className="absolute top-4 right-4 h-8 w-8 rounded-full hover:bg-white/10 flex items-center justify-center text-slate-400 hover:text-white"
+              >
+                <X className="h-4 w-4" />
+              </button>
+
+              <div className="text-center space-y-2 mb-6">
+                <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/20 text-emerald-400 border border-emerald-500/30">
+                  <Lock className="h-6 w-6" />
+                </div>
+                <h3 className="text-xl font-black text-white">
+                  {authMode === 'signup' ? 'Save & Secure Your AI Setup' : 'Sign In to Your Workspace'}
+                </h3>
+                <p className="text-xs text-slate-300">
+                  {authMode === 'signup'
+                    ? 'Enter your email & password to activate your 24/7 WhatsApp AI Employee.'
+                    : 'Log in to connect your setup to an existing account.'}
+                </p>
+              </div>
+
+              {authError && (
+                <div className="mb-4 p-3 rounded-xl bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs flex items-center gap-2">
+                  <AlertTriangle className="h-4 w-4 shrink-0 text-rose-400" />
+                  <span>{authError}</span>
+                </div>
+              )}
+
+              <form onSubmit={handleAuthSubmit} className="space-y-4">
+                <div className="space-y-1.5">
+                  <Label className="text-xs text-slate-300 font-semibold">Email Address</Label>
+                  <Input
+                    type="email"
+                    required
+                    value={authEmail}
+                    onChange={(e) => setAuthEmail(e.target.value)}
+                    placeholder="name@company.com"
+                    className="bg-slate-900 border-white/15 rounded-xl text-white text-xs h-10"
+                  />
+                </div>
+
+                <div className="space-y-1.5">
+                  <Label className="text-xs text-slate-300 font-semibold">Password</Label>
+                  <Input
+                    type="password"
+                    required
+                    minLength={6}
+                    value={authPassword}
+                    onChange={(e) => setAuthPassword(e.target.value)}
+                    placeholder="Minimum 6 characters"
+                    className="bg-slate-900 border-white/15 rounded-xl text-white text-xs h-10"
+                  />
+                </div>
+
+                <Button
+                  type="submit"
+                  disabled={isAuthenticating}
+                  className="w-full h-11 bg-gradient-to-r from-emerald-400 to-teal-500 hover:from-emerald-300 hover:to-teal-400 text-slate-950 font-extrabold rounded-xl text-xs shadow-lg shadow-emerald-500/25 mt-2"
+                >
+                  {isAuthenticating ? (
+                    <Loader2 className="h-4 w-4 animate-spin" />
+                  ) : authMode === 'signup' ? (
+                    'Create Account & Launch AI 🚀'
+                  ) : (
+                    'Sign In & Launch AI 🚀'
+                  )}
+                </Button>
+              </form>
+
+              <div className="mt-4 pt-4 border-t border-white/10 text-center text-xs text-slate-400">
+                {authMode === 'signup' ? (
+                  <span>
+                    Already have an account?{' '}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthMode('signin');
+                        setAuthError(null);
+                      }}
+                      className="text-emerald-400 hover:underline font-bold"
+                    >
+                      Sign In
+                    </button>
+                  </span>
+                ) : (
+                  <span>
+                    Need a new account?{' '}
+                    <button
+                      type="button"
+                      onClick={() => {
+                        setAuthMode('signup');
+                        setAuthError(null);
+                      }}
+                      className="text-emerald-400 hover:underline font-bold"
+                    >
+                      Sign Up Free
+                    </button>
+                  </span>
+                )}
+              </div>
+            </div>
+          </div>
         )}
       </main>
     </div>

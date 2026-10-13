@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import {
   Brain,
   CheckCircle2,
@@ -18,6 +18,8 @@ import {
   AlertTriangle,
   Send,
   Zap,
+  Loader2,
+  RefreshCw,
 } from 'lucide-react';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
@@ -31,7 +33,7 @@ interface StagedRule {
   id: string;
   source: 'whatsapp_chat' | 'daily_interview' | 'voice_note';
   sourceDetail: string;
-  category: 'Pricing & Discount' | 'Product Specification' | 'Timing & Availability' | 'Policy & Guarantee';
+  category: string;
   extractedRule: string;
   originalText: string;
   confidence: number;
@@ -48,39 +50,10 @@ interface ApprovedKnowledge {
 }
 
 export function AiLearningApprovalRadar() {
-  // Staged rules extracted by AI from chats / interviews waiting for Owner's 1-click approval
-  const [stagedRules, setStagedRules] = useState<StagedRule[]>([
-    {
-      id: 'stg_1',
-      source: 'whatsapp_chat',
-      sourceDetail: 'Chat with Customer (+91 98260 11223)',
-      category: 'Pricing & Discount',
-      extractedRule: 'For 5kW Solar Rooftop systems, provide an additional ₹5,000 cash discount if payment is completed in 24 hours.',
-      originalText: 'Owner told client: "Agar aap kal tak final karoge to 5kW inverter pe 5000 alag se discount dunga"',
-      confidence: 96,
-      timestamp: 'Today, 4:15 PM',
-    },
-    {
-      id: 'stg_2',
-      source: 'daily_interview',
-      sourceDetail: '8:00 PM WhatsApp Daily Voice Interview',
-      category: 'Timing & Availability',
-      extractedRule: 'Sunday clinic consultations are strictly by prior appointment between 10:00 AM to 1:00 PM only.',
-      originalText: 'Voice Note: "Sunday ko main sirf subah 10 se 1 baje baithta hu aur bina booking kisi ko nahi dekhta"',
-      confidence: 98,
-      timestamp: 'Yesterday, 8:02 PM',
-    },
-    {
-      id: 'stg_3',
-      source: 'voice_note',
-      sourceDetail: 'Audio note from +91 94250 88776',
-      category: 'Policy & Guarantee',
-      extractedRule: 'JEE Crash Course admission fee of ₹8,000 includes all printed module study materials and test series.',
-      originalText: 'Audio Transcription: "Crash course me ₹8000 me saari test series aur printed books shamil hai"',
-      confidence: 94,
-      timestamp: 'Today, 2:30 PM',
-    },
-  ]);
+  const [stagedRules, setStagedRules] = useState<StagedRule[]>([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [actionLoadingId, setActionLoadingId] = useState<string | null>(null);
+  const [apiError, setApiError] = useState<string | null>(null);
 
   // Approved Knowledge Base that AI is actively using right now
   const [activeKnowledge, setActiveKnowledge] = useState<ApprovedKnowledge[]>([
@@ -122,56 +95,157 @@ export function AiLearningApprovalRadar() {
   const [interviewPhone, setInterviewPhone] = useState('+91 98931 00000');
   const [interviewStatus, setInterviewStatus] = useState<'active' | 'paused'>('active');
 
-  // Approve a staged rule
-  const handleApprove = (rule: StagedRule) => {
-    const newApproved: ApprovedKnowledge = {
-      id: 'knw_' + Date.now(),
-      category: rule.category,
-      ruleTitle: rule.category + ' Rule',
-      ruleDetail: rule.extractedRule,
-      approvedAt: 'Just now',
-      status: 'active',
-    };
-    setActiveKnowledge([newApproved, ...activeKnowledge]);
-    setStagedRules(stagedRules.filter((r) => r.id !== rule.id));
+  // Fetch live staged rules from DB
+  const fetchStagedRules = useCallback(async () => {
+    setIsLoading(true);
+    setApiError(null);
+    try {
+      const res = await fetch('/api/ai/knowledge/staging');
+      const data = await res.json();
+      if (res.ok && data.success && Array.isArray(data.suggestions)) {
+        const mapped: StagedRule[] = data.suggestions.map((row: any) => ({
+          id: row.id,
+          source: (row.sender_phone?.includes('interview') ? 'daily_interview' : 'whatsapp_chat') as any,
+          sourceDetail: row.sender_phone || 'WhatsApp Chat',
+          category: row.extracted_attribute || row.extracted_entity || 'Business Knowledge',
+          extractedRule: row.extracted_value || row.raw_message_text,
+          originalText: row.raw_message_text || '',
+          confidence: Math.round((row.confidence_score || 0.95) * 100),
+          timestamp: new Date(row.created_at).toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' }),
+        }));
+        setStagedRules(mapped);
+      } else {
+        // Fallback default sample if empty database
+        setStagedRules([]);
+      }
+    } catch {
+      setApiError('Unable to sync live staging radar with server.');
+    } finally {
+      setIsLoading(false);
+    }
+  }, []);
+
+  useEffect(() => {
+    void fetchStagedRules();
+  }, [fetchStagedRules]);
+
+  // Approve a staged rule (activates into live RAG knowledge)
+  const handleApprove = async (rule: StagedRule) => {
+    setActionLoadingId(rule.id);
+    try {
+      const res = await fetch('/api/ai/knowledge/staging', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id: rule.id, action: 'approve' }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to approve rule');
+      }
+
+      const newApproved: ApprovedKnowledge = {
+        id: data.documentId || 'knw_' + Date.now(),
+        category: rule.category,
+        ruleTitle: rule.category + ' Rule',
+        ruleDetail: rule.extractedRule,
+        approvedAt: 'Just now',
+        status: 'active',
+      };
+      setActiveKnowledge((prev) => [newApproved, ...prev]);
+      setStagedRules((prev) => prev.filter((r) => r.id !== rule.id));
+    } catch (err: any) {
+      alert(err.message || 'Error approving rule');
+    } finally {
+      setActionLoadingId(null);
+    }
   };
 
   // Reject / discard a staged rule
-  const handleReject = (id: string) => {
-    setStagedRules(stagedRules.filter((r) => r.id !== id));
+  const handleReject = async (id: string) => {
+    setActionLoadingId(id);
+    try {
+      const res = await fetch('/api/ai/knowledge/staging', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ id, action: 'reject' }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to discard rule');
+      }
+      setStagedRules((prev) => prev.filter((r) => r.id !== id));
+    } catch (err: any) {
+      alert(err.message || 'Error discarding rule');
+    } finally {
+      setActionLoadingId(null);
+    }
   };
 
-  // Save edited rule
-  const handleSaveEdit = () => {
+  // Save edited rule and immediately promote
+  const handleSaveEdit = async () => {
     if (!editingRule) return;
-    const newApproved: ApprovedKnowledge = {
-      id: 'knw_' + Date.now(),
-      category: editingRule.category,
-      ruleTitle: editingRule.category + ' (Customized)',
-      ruleDetail: editText,
-      approvedAt: 'Just now',
-      status: 'active',
-    };
-    setActiveKnowledge([newApproved, ...activeKnowledge]);
-    setStagedRules(stagedRules.filter((r) => r.id !== editingRule.id));
-    setEditingRule(null);
+    setActionLoadingId(editingRule.id);
+    try {
+      const res = await fetch('/api/ai/knowledge/staging', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          id: editingRule.id,
+          action: 'edit',
+          extractedValue: editText,
+        }),
+      });
+      const data = await res.json();
+      if (!res.ok || !data.success) {
+        throw new Error(data.error || 'Failed to update rule');
+      }
+
+      // Automatically approve after saving edit
+      await handleApprove({ ...editingRule, extractedRule: editText });
+      setEditingRule(null);
+    } catch (err: any) {
+      alert(err.message || 'Error editing rule');
+    } finally {
+      setActionLoadingId(null);
+    }
   };
 
   // Add manual rule
-  const handleAddManualRule = () => {
+  const handleAddManualRule = async () => {
     if (!newTitle.trim() || !newDetail.trim()) return;
-    const newApproved: ApprovedKnowledge = {
-      id: 'knw_' + Date.now(),
-      category: newCategory,
-      ruleTitle: newTitle,
-      ruleDetail: newDetail,
-      approvedAt: 'Just now',
-      status: 'active',
-    };
-    setActiveKnowledge([newApproved, ...activeKnowledge]);
-    setNewTitle('');
-    setNewDetail('');
-    setIsAddModalOpen(false);
+    try {
+      const res = await fetch('/api/ai/knowledge/staging', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          rawMessageText: `Owner rule: ${newTitle} - ${newDetail}`,
+          extractedEntity: newTitle,
+          extractedAttribute: newCategory,
+          extractedValue: newDetail,
+          confidenceScore: 1.0,
+          senderPhone: 'owner_manual_entry',
+        }),
+      });
+      const data = await res.json();
+      if (res.ok && data.success && data.suggestion) {
+        const newStaged: StagedRule = {
+          id: data.suggestion.id,
+          source: 'voice_note',
+          sourceDetail: 'Owner Manual Entry',
+          category: newCategory,
+          extractedRule: newDetail,
+          originalText: newTitle,
+          confidence: 100,
+          timestamp: 'Just now',
+        };
+        setStagedRules((prev) => [newStaged, ...prev]);
+      }
+      setNewTitle('');
+      setNewDetail('');
+      setIsAddModalOpen(false);
+    } catch (err: any) {
+      alert(err.message || 'Failed to add rule');
+    }
   };
 
   const filteredKnowledge = activeKnowledge.filter(
@@ -227,7 +301,14 @@ export function AiLearningApprovalRadar() {
           </span>
         </div>
 
-        {stagedRules.length === 0 ? (
+        {isLoading ? (
+          <Card className="border border-border bg-card/40 text-center py-8">
+            <CardContent className="flex flex-col items-center justify-center gap-2">
+              <Loader2 className="h-6 w-6 text-emerald-500 animate-spin" />
+              <p className="text-xs text-muted-foreground">Syncing live staged knowledge radar...</p>
+            </CardContent>
+          </Card>
+        ) : stagedRules.length === 0 ? (
           <Card className="border-dashed border-border bg-card/50 text-center py-8">
             <CardContent>
               <CheckCircle2 className="h-8 w-8 text-emerald-500 mx-auto mb-2 opacity-80" />
@@ -274,15 +355,21 @@ export function AiLearningApprovalRadar() {
                     <div className="flex items-center gap-2 shrink-0 md:self-center">
                       <Button
                         size="sm"
+                        disabled={actionLoadingId === rule.id}
                         onClick={() => handleApprove(rule)}
-                        className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold gap-1.5 shadow-sm active:scale-95"
+                        className="bg-emerald-600 hover:bg-emerald-700 text-white rounded-xl text-xs font-semibold gap-1.5 shadow-sm active:scale-95 disabled:opacity-50"
                       >
-                        <CheckCircle2 className="h-4 w-4" />
+                        {actionLoadingId === rule.id ? (
+                          <Loader2 className="h-4 w-4 animate-spin" />
+                        ) : (
+                          <CheckCircle2 className="h-4 w-4" />
+                        )}
                         Approve Rule
                       </Button>
                       <Button
                         size="sm"
                         variant="outline"
+                        disabled={actionLoadingId === rule.id}
                         onClick={() => {
                           setEditingRule(rule);
                           setEditText(rule.extractedRule);
@@ -295,6 +382,7 @@ export function AiLearningApprovalRadar() {
                       <Button
                         size="sm"
                         variant="ghost"
+                        disabled={actionLoadingId === rule.id}
                         onClick={() => handleReject(rule.id)}
                         className="text-muted-foreground hover:text-red-500 hover:bg-red-500/10 rounded-xl text-xs"
                       >

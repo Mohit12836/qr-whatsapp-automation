@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useRef } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from '@/components/ui/card';
 import { Button } from '@/components/ui/button';
 import { QrCode, RefreshCw, CheckCircle2, Smartphone, ShieldCheck, Zap, Bot } from 'lucide-react';
@@ -15,7 +15,7 @@ export function QrWhatsAppConnect() {
   const [loading, setLoading] = useState(false);
   const pollTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const fetchStatus = async () => {
+  const fetchStatus = useCallback(async () => {
     try {
       let data = null;
       // Try Cloudflare Tunnel URL first (works on Vercel live production)
@@ -56,15 +56,17 @@ export function QrWhatsAppConnect() {
     } catch (err) {
       console.error('Error fetching QR status:', err);
     }
-  };
+  }, []);
 
   useEffect(() => {
-    fetchStatus();
-    pollTimerRef.current = setInterval(fetchStatus, 3000);
+    void fetchStatus();
+    pollTimerRef.current = setInterval(() => {
+      void fetchStatus();
+    }, 3000);
     return () => {
       if (pollTimerRef.current) clearInterval(pollTimerRef.current);
     };
-  }, []);
+  }, [fetchStatus]);
 
   const handleRefresh = async () => {
     setLoading(true);
