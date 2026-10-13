@@ -8,8 +8,9 @@ import {
   type ProviderArgs,
 } from './shared'
 
-function resolveEndpoint(apiKey: string): string {
-  if (process.env.OPENAI_BASE_URL) {
+function resolveEndpoint(apiKey: string, fallback = false): string {
+  // If VPS base URL is set but we need fallback, go direct to Gemini
+  if (process.env.OPENAI_BASE_URL && !fallback) {
     return `${process.env.OPENAI_BASE_URL.replace(/\/+$/, '')}/chat/completions`
   }
   if (apiKey.startsWith('gsk_')) {
@@ -22,6 +23,32 @@ function resolveEndpoint(apiKey: string): string {
     return 'https://openrouter.ai/api/v1/chat/completions'
   }
   return 'https://api.openai.com/v1/chat/completions'
+}
+
+async function callEndpoint(
+  url: string,
+  apiKey: string,
+  model: string,
+  messages: object[],
+  maxTokens: number,
+  timeoutMs: number,
+): Promise<OpenAiResponse | null> {
+  let res: Response
+  try {
+    res = await fetch(url, {
+      method: 'POST',
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({ model, messages, max_tokens: maxTokens }),
+      signal: AbortSignal.timeout(timeoutMs),
+    })
+  } catch {
+    return null
+  }
+  if (!res.ok) return null
+  return (await res.json().catch(() => null)) as OpenAiResponse | null
 }
 
 interface OpenAiResponse {

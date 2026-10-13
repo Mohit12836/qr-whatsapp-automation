@@ -132,6 +132,7 @@ export function FacebookEmbeddedSignup({
 
     try {
       window.FB.login(handleResponse, {
+        config_id: '1854600595957711',
         response_type: 'code',
         override_default_response_type: true,
         scope: 'whatsapp_business_management,whatsapp_business_messaging',
@@ -139,6 +140,7 @@ export function FacebookEmbeddedSignup({
           setup: {},
           featureType: 'whatsapp_business_app_onboarding',
           sessionInfoVersion: '3',
+          version: 'v4',
         },
       });
     } catch (err: any) {
