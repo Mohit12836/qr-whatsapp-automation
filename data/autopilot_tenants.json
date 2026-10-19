@@ -1,0 +1,129 @@
+[
+  {
+    "id": "tenant_anu_krupa",
+    "ownerName": "Admin",
+    "businessName": "अनु कृपा ऑनलाइन (Anu Kruppa Online)",
+    "phone": "918989605297",
+    "niche": "mp_online_csc",
+    "channelJid": "120363281120066800@newsletter",
+    "targetGroupJids": [
+      "120363028449917271@g.us"
+    ],
+    "brandVoice": "Humble, helpful, local MP citizen helper, reliable document solver",
+    "dailySchedule": {
+      "morningPostTime": "08:45",
+      "eveningHookTime": "18:30",
+      "isAutoPilotActive": true
+    },
+    "customPillars": [
+      {
+        "id": "p1_kyc_hack",
+        "pillar": "educational_value",
+        "topic": "लाड़ली बहना & समग्र ई-केवाईसी",
+        "headline": "📢 *समग्र ई-केवाईसी में बार-बार आ रहा एरर? यहाँ है 2 मिनट का समाधान!*",
+        "body": "काफी भाइयों को आधार बायोमेट्रिक मिसमैच के कारण समग्र पोर्टल पर रिजेक्शन मिल रहा है।\n\n💡 *आसान समाधान:*\n1. पहले आधार पोर्टल पर नाम व जन्मतिथि चेक करें।\n2. यदि आधार में मोबाइल लिंक है तो OTP मोड से ही e-KYC करें (बायोमेट्रिक फिंगर से तेज होता है)।\n3. सर्वर सुबह 8 से 10 बजे सबसे तेज चलता है।",
+        "callToAction": "👉 अगर किसी का फॉर्म अटका है या समग्र में नाम अलग है, तो सहायता के लिए संपर्क करें:"
+      },
+      {
+        "id": "p2_scholarship_hook",
+        "pillar": "micro_commitment_hook",
+        "topic": "कॉलेज स्कॉलरशिप फॉर्म",
+        "headline": "🎓 *कॉलेज छात्रवृत्ति (Scholarship) फॉर्म की अंतिम तिथि नजदीक!*",
+        "body": "सभी विद्यार्थी ध्यान दें: आय प्रमाण पत्र और जाति प्रमाण पत्र डिजिटल हस्ताक्षर वाला होना अनिवार्य है।\nअंतिम दिनों में सर्वर डाउन होने से फॉर्म भरने से वंचित न रहें।",
+        "callToAction": "👉 अपना फॉर्म घर बैठे भरवाने के लिए दस्तावेज WhatsApp करें:"
+      }
+    ],
+    "stats": {
+      "totalPostsPublished": 2,
+      "inboundLeadsGenerated": 0,
+      "dealsClosed": 0,
+      "lastPublishedAt": "2026-10-19T14:17:42.321Z"
+    },
+    "createdAt": "2026-10-19T14:16:31.791Z",
+    "updatedAt": "2026-10-19T14:17:41.138Z"
+  },
+  {
+    "id": "tenant_friend_solar",
+    "ownerName": "Friend Solar Partner",
+    "businessName": "Surya Solar & Energy Systems",
+    "phone": "919876543210",
+    "niche": "solar_energy",
+    "targetGroupJids": [],
+    "brandVoice": "Expert green energy consultant, subsidy specialist",
+    "dailySchedule": {
+      "morningPostTime": "10:00",
+      "eveningHookTime": "19:00",
+      "isAutoPilotActive": true
+    },
+    "customPillars": [
+      {
+        "id": "p_solar_1",
+        "pillar": "educational_value",
+        "topic": "पीएम सूर्य घर मुफ्त बिजली योजना",
+        "headline": "☀️ *3kW सोलर लगाने पर ₹78,000 की सरकारी सब्सिडी कैसे प्राप्त करें?*",
+        "body": "यदि आपका मासिक बिजली बिल ₹2,500 से अधिक है, तो ऑन-ग्रिड सोलर सिस्टम से आपका बिजली बिल जीवन भर के लिए ₹0 हो सकता है।",
+        "callToAction": "👉 अपने घर की छत का फ्री फिजिबिलिटी सर्वे करवाने के लिए DM करें:"
+      }
+    ],
+    "stats": {
+      "totalPostsPublished": 0,
+      "inboundLeadsGenerated": 0,
+      "dealsClosed": 0
+    },
+    "createdAt": "2026-10-19T14:16:31.793Z",
+    "updatedAt": "2026-10-19T14:16:31.793Z"
+  },
+  {
+    "id": "tenant_friend_realestate",
+    "ownerName": "Friend Property Advisor",
+    "businessName": "Malwa Property & Assets",
+    "phone": "919111222333",
+    "niche": "real_estate",
+    "targetGroupJids": [],
+    "brandVoice": "High trust, legal verification advisor, investment counselor",
+    "dailySchedule": {
+      "morningPostTime": "11:00",
+      "eveningHookTime": "18:00",
+      "isAutoPilotActive": true
+    },
+    "customPillars": [
+      {
+        "id": "p_re_1",
+        "pillar": "educational_value",
+        "topic": "प्लॉट रजिस्ट्री व नामांतरण नियम",
+        "headline": "🏡 *प्लॉट खरीदने से पहले 3 कानूनी दस्तावेज जरूर जांचें!*",
+        "body": "1. टीएनसीपी (TNCP) और रेरा (RERA) अप्रूवल\n2. 13 साल की डायवर्शन रसीद व नामांतरण\n3. बैंक लोन अप्रूवल सर्टिफिकेट",
+        "callToAction": "👉 इंदौर/जावरा क्षेत्र में वेरीफाइड प्रॉपर्टीज की लिस्ट के लिए DM करें:"
+      }
+    ],
+    "stats": {
+      "totalPostsPublished": 0,
+      "inboundLeadsGenerated": 0,
+      "dealsClosed": 0
+    },
+    "createdAt": "2026-10-19T14:16:31.793Z",
+    "updatedAt": "2026-10-19T14:16:31.793Z"
+  },
+  {
+    "id": "tenant_test_cafe",
+    "ownerName": "Rahul Verma",
+    "businessName": "Chai & Co. Cafe",
+    "phone": "919988776655",
+    "niche": "general_business",
+    "targetGroupJids": [],
+    "brandVoice": "Cozy cafe vibes",
+    "dailySchedule": {
+      "morningPostTime": "09:00",
+      "eveningHookTime": "17:00",
+      "isAutoPilotActive": true
+    },
+    "customPillars": [],
+    "stats": {
+      "totalPostsPublished": 0,
+      "inboundLeadsGenerated": 0,
+      "dealsClosed": 0
+    },
+    "createdAt": "2026-10-19T14:17:42.315Z",
+    "updatedAt": "2026-10-19T14:17:42.315Z"
+  }
+]
