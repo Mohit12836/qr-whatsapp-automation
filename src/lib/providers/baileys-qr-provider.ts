@@ -73,7 +73,7 @@ export class BaileysQrProvider implements MessagingProvider {
     if (isGroup) {
       const res = await fetch(`${this.config.bridgeUrl}/group/send`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
           groupId: recipient,
           message: text || caption || '',
@@ -100,7 +100,7 @@ export class BaileysQrProvider implements MessagingProvider {
     if (isChannel) {
       const res = await fetch(`${this.config.bridgeUrl}/channel/send`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
+        headers: { 'Content-Type': 'application/json; charset=utf-8' },
         body: JSON.stringify({
           channelJid: recipient,
           message: text || caption || '',
@@ -130,7 +130,7 @@ export class BaileysQrProvider implements MessagingProvider {
 
     const res = await fetch(endpoint, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json; charset=utf-8' },
       body: JSON.stringify(payload),
       signal: AbortSignal.timeout(10000),
     });
