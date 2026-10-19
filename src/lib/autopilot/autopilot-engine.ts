@@ -74,6 +74,19 @@ export class AutopilotEngine {
       ? templates[Math.floor(Math.random() * templates.length)]
       : this.getFallbackTemplate(tenant.niche, targetPillar);
 
+    if (tenant.hidePhoneNumber) {
+      const text = [
+        chosen.headline,
+        '━━━━━━━━━━━━━━━━━━',
+        chosen.body,
+        '',
+        chosen.callToAction,
+        '━━━━━━━━━━━━━━━━━━',
+        `📈 ${tenant.businessName}`,
+      ].join('\n');
+      return { text, pillar: chosen.pillar };
+    }
+
     const waLink = `https://wa.me/${tenant.phone.replace(/\D/g, '')}?text=${encodeURIComponent('Namaste, mujhe ' + chosen.topic + ' ke bare me jankari chahiye')}`;
 
     const text = [

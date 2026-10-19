@@ -134,6 +134,7 @@
     "niche": "general_business",
     "channelJid": "120363432174967045@newsletter",
     "targetGroupJids": [],
+    "hidePhoneNumber": true,
     "brandVoice": "Actionable, viral, high-value retail growth strategies and market insights for business owners without pushy spam.",
     "dailySchedule": {
       "morningPostTime": "09:00",

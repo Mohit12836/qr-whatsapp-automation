@@ -23,6 +23,7 @@ export interface TenantAutopilotProfile {
   niche: IndustryNiche;
   channelJid?: string; // WhatsApp Channel JID (e.g. 120363281120066800@newsletter)
   targetGroupJids: string[]; // Community Groups to monitor & publish
+  hidePhoneNumber?: boolean; // If true, never include personal phone number or wa.me link
   brandVoice: string; // e.g. "Helpful, authoritative, humble, solving real problems without pushy sales"
   dailySchedule: {
     morningPostTime: string; // "09:30"
