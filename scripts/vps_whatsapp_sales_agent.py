@@ -20,7 +20,7 @@ from pydantic import BaseModel
 from typing import List, Optional, Dict, Any
 
 GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "")
-ALT_GEMINI_KEY = ""
+ALT_GEMINI_KEY = os.environ.get("ALT_GEMINI_KEY", "")
 
 app = FastAPI(title="VPS Autonomous WhatsApp AI Sales Agent", version="2.0.0")
 
