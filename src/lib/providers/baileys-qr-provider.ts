@@ -25,10 +25,10 @@ export class BaileysQrProvider implements MessagingProvider {
     groupRead: true,           // Fully supported via groupFetchAllParticipating()
     groupSend: true,           // Fully supported via group JID
     groupMemberManagement: true,
-    channelRead: false,
-    channelPublish: false,
+    channelRead: true,
+    channelPublish: true,
     banRisk: 'medium',         // Risk exists for bulk cold messaging
-    statusLabel: 'QR Baileys Bridge (Community & Group Intelligence)',
+    statusLabel: 'QR Baileys Bridge (Community, Group & Channel Automation)',
   };
 
   private config: BaileysConfig;
@@ -95,6 +95,33 @@ export class BaileysQrProvider implements MessagingProvider {
       };
     }
 
+    // WhatsApp Channel / Newsletter message
+    const isChannel = recipient.endsWith('@newsletter');
+    if (isChannel) {
+      const res = await fetch(`${this.config.bridgeUrl}/channel/send`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          channelJid: recipient,
+          message: text || caption || '',
+        }),
+        signal: AbortSignal.timeout(10000),
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({ error: 'Unknown bridge failure' }));
+        throw new Error(err.error || `HTTP ${res.status} from channel/send`);
+      }
+
+      return {
+        success: true,
+        messageId: `baileys-chn-${Date.now()}`,
+        recipient,
+        provider: this.id,
+        timestamp: new Date().toISOString(),
+      };
+    }
+
     // Direct individual message
     const endpoint = mediaUrl ? `${this.config.bridgeUrl}/session/default/send-media` : `${this.config.bridgeUrl}/send`;
     const payload = mediaUrl
@@ -119,6 +146,27 @@ export class BaileysQrProvider implements MessagingProvider {
       recipient,
       provider: this.id,
       timestamp: new Date().toISOString(),
+    };
+  }
+
+  async resolveChannel(inviteLinkOrCode: string): Promise<{ channelJid: string; name: string; subscribersCount: number }> {
+    const res = await fetch(`${this.config.bridgeUrl}/channel/resolve`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ link: inviteLinkOrCode, inviteCode: inviteLinkOrCode }),
+      signal: AbortSignal.timeout(10000),
+    });
+
+    if (!res.ok) {
+      const err = await res.json().catch(() => ({ error: 'Failed to resolve channel' }));
+      throw new Error(err.error || `HTTP ${res.status} from channel/resolve`);
+    }
+
+    const data = await res.json();
+    return {
+      channelJid: data.metadata?.id,
+      name: data.metadata?.thread_metadata?.name?.text || 'WhatsApp Channel',
+      subscribersCount: parseInt(data.metadata?.thread_metadata?.subscribers_count || '0', 10),
     };
   }
 
