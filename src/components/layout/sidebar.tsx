@@ -28,6 +28,7 @@ import {
   Zap,
 } from "lucide-react";
 import type { AccountRole } from "@/lib/auth/roles";
+import { isFounderEmail } from "@/lib/auth/founder";
 
 // Per-role chip metadata used in the sidebar's account strip + the
 // Members tab roster. Keeping this near both consumers in a single
@@ -214,7 +215,7 @@ export function Sidebar({ open = false, onClose }: SidebarProps) {
             {navItems
               .filter((item) => {
                 if (item.href === "/superadmin") {
-                  return accountRole === "owner" || profile?.email === "mohit12836@gmail.com";
+                  return isFounderEmail(profile?.email);
                 }
                 return true;
               })

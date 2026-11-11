@@ -1,0 +1,2763 @@
+[
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_order_ready_pickup",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "ऑर्डर तैयार है",
+    "body": "नमस्ते {{1}}, आपकी दुकान {{2}} से आपका ग्रोसरी ऑर्डर #{{3}} पैक होकर तैयार है। क्या आप दुकान से कलेक्ट करेंगे या होम डिलीवरी भेजें?",
+    "footer": "Nahata / Vismart Stores",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान से लूंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "डिलीवरी भेजो"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "राहुल जी",
+          "नाहटा किराना",
+          "ORD-1024"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_monthly_ration_reminder",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "मासिक राशन रीफिल",
+    "body": "नमस्ते {{1}}, आपकी दुकान {{2}} से पिछले महीने का राशन ऑर्डर रिन्यू करने का समय आ गया है। क्या पुरानी लिस्ट दोबारा डिस्पैच करें?",
+    "footer": "त्वरित होम डिलीवरी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "पुरानी लिस्ट भेजो"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "नई लिस्ट दूंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अमित जी",
+          "श्री किराना"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_bill_summary_dispatch",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "बिल व डिलीवरी अपडेट",
+    "body": "नमस्ते {{1}}, आपकी दुकान {{2}} का बिल #{{3}} कुल राशि ₹{{4}} जनरेट हो गया है। आपका सामान डिलीवरी के लिए निकल चुका है।",
+    "footer": "सुरक्षित पैकिंग",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बिल विवरण देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "लोकेशन ट्रैक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दिनेश जी",
+          "नाहटा स्टोर्स",
+          "INV-882",
+          "1450"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_vip_loyalty_credit",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "लॉयल्टी कैशबैक क्रेडिट",
+    "body": "नमस्ते {{1}}, आपकी नियमित खरीदारी के लिए खाते में ₹{{2}} का लॉयल्टी कैशबैक क्रेडिट हुआ है। क्या आज के नए आर्डर में रिडीम करना चाहते हैं?",
+    "footer": "सीमित समय के लिए मान्य",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ रिडीम करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "बाद में करूंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "संजय जी",
+          "150"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_fresh_stock_arrival",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "ताजा नया स्टॉक आ गया",
+    "body": "नमस्ते {{1}}, दुकान {{2}} पर शुद्ध देसी घी और प्रीमियम मसालों का ताजा स्टॉक आ चुका है। आज ही आर्डर करें और विशेष डिस्काउंट पाएं।",
+    "footer": "शुद्धता की गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "रेट लिस्ट भेजो"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान आऊंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "राजेश जी",
+          "नाहटा जनरल"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_delivery_otp_check",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "डिलीवरी सुरक्षा कोड",
+    "body": "नमस्ते {{1}}, आपका ऑर्डर लेकर डिलीवरी पार्टनर {{2}} निकल चुका है। सामान प्राप्त करते समय यह डिलीवरी कोड {{3}} साझा करें।",
+    "footer": "संपर्क रहित डिलीवरी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "पार्टनर से बात करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सामान मिल गया"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "महेश जी",
+          "सुनील",
+          "4589"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_unpaid_khata_courtesy",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दुकान खाता शेष अपडेट",
+    "body": "नमस्ते {{1}}, आपकी दुकान {{2}} के खाते का वर्तमान शेष ₹{{3}} है। ऑनलाइन भुगतान करने के लिए त्वरित लिंक उपलब्ध है।",
+    "footer": "डिजिटल खाता रसीद",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "UPI लिंक भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान पर दूंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "पंकज जी",
+          "नाहटा स्टोर्स",
+          "2400"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_custom_item_available",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "माँगा गया सामान उपलब्ध है",
+    "body": "नमस्ते {{1}}, आपने जिस सामान '{{2}}' के लिए पूछा था, वह दुकान पर आ गया है। क्या आपके लिए अलग रख दें?",
+    "footer": "सीमित स्टॉक",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ 1 पीस रख लें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "अब नहीं चाहिए"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मनीष जी",
+          "फॉर्च्यून राइस ब्रान तेल 5L"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_weekend_super_saver",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "वीकेंड सुपर सेवर सेल",
+    "body": "नमस्ते {{1}}, इस शनिवार-रविवार दुकान {{2}} पर ₹{{3}} की खरीदारी पर ₹{{4}} की सीधी छूट पाएं। ऑफर केवल स्टॉक रहने तक।",
+    "footer": "वीकेंड स्पेशल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "ऑफर लिस्ट दिखाएं"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "आर्डर बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सतीश जी",
+          "नाहटा स्टोर्स",
+          "1500",
+          "150"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_instant_reorder",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "1 क्लिक री ऑर्डर",
+    "body": "नमस्ते {{1}}, आपका पिछला पसंदीदा राशन पैकेट '{{2}}' 1-क्लिक में दोबारा मंगवाने के लिए तैयार है। क्या आज रवाना करें?",
+    "footer": "फास्ट री-ऑर्डर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ रवाना करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कुछ सामान बदलना है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "किशन जी",
+          "मंथली बासमती व दाल पैक"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_feedback_rating_inquiry",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "सेवा संतुष्टि फीडबैक",
+    "body": "नमस्ते {{1}}, क्या आज आपको दुकान {{2}} से भेजा गया ऑर्डर #{{3}} समय पर और सुरक्षित मिला? आपकी राय हमारे लिए मूल्यवान है।",
+    "footer": "आपकी अपनी भरोसेमंद दुकान",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ बहुत अच्छा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कोई शिकायत है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विनोद जी",
+          "नाहटा जनरल",
+          "ORD-108"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_festival_pooja_kit",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "पूजा व त्यौहार स्पेशल किट",
+    "body": "नमस्ते {{1}}, आगामी {{2}} पर्व के लिए शुद्ध रोली, मौली, कपूर, गंगाजल व पूजा सामग्री की संपूर्ण किट दुकान पर उपलब्ध है। घर बैठे मंगवाएं।",
+    "footer": "पवित्रता व शुद्धता",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "किट की कीमत पूछें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "किट घर भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "गोपाल जी",
+          "दीपावली"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_daily_milk_bread_schedule",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दैनिक दूध व ब्रेड शेड्यूल",
+    "body": "नमस्ते {{1}}, कल सुबह की दैनिक डिलीवरी (दूध/ब्रेड/अंडे) का शेड्यूल एक्टिव है। यदि कल मात्रा बदलनी हो तो कृपया रात 10 बजे तक बताएं।",
+    "footer": "मॉर्निंग फ्रेश डिलीवरी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कल नहीं चाहिए"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "मात्रा बढ़ाएं"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "नीरज जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_wallet_refund_credit",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "रिफंड राशि जमा",
+    "body": "नमस्ते {{1}}, अनुपलब्ध सामान का रिफंड ₹{{2}} आपके स्टोर वॉलेट में सफलतापूर्वक क्रेडिट कर दिया गया है। नया शेष ₹{{3}} है।",
+    "footer": "तुरंत क्रेडिट गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "वॉलेट पासबुक देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "प्रमोद जी",
+          "85",
+          "320"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "kirana",
+    "industry": "Kirana / Grocery / General Store",
+    "name": "kirana_seasonal_cold_beverages",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "गर्मियों का ताजा रिफ्रेशमेंट",
+    "body": "नमस्ते {{1}}, गर्मी से राहत के लिए आइसक्रीम, कोल्ड ड्रिंक्स और शरबत का नया चिल्ड स्टॉक उपलब्ध है। आज ही ऑर्डर करें और इंस्टेंट डिलीवरी पाएं।",
+    "footer": "चिल्ड डिलीवरी 20 मिनट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "मेनू और ऑफर देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "आर्डर भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीपक जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_fitting_alteration_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "कपड़े ऑल्टरेशन तैयार ️",
+    "body": "नमस्ते {{1}}, आपके कपड़े (आर्डर #{{2}}) का फिटिंग/ऑल्टरेशन पूरा हो गया है। आप दुकान {{3}} से ट्रायल लेकर कलेक्ट कर सकते हैं।",
+    "footer": "परफेक्ट फिटिंग गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "आज लेने आऊंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "होम डिलीवरी करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अभिषेक जी",
+          "ALT-441",
+          "नाहटा गारमेंट्स"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_festive_new_arrival",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "त्यौहारी नया कलेक्शन लॉन्च",
+    "body": "नमस्ते {{1}}, दुकान {{2}} पर फेस्टिव सीजन के लिए कुर्ते, शेरवानी, इंडो-वेस्टर्न व साड़ियों का नवीनतम स्टॉक आ चुका है। VIP डिस्काउंट जारी है।",
+    "footer": "ट्रेंडिंग फैशन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कैटलॉग देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान आऊंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रोहित जी",
+          "नाहटा गारमेंट्स"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_custom_design_approval",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "डिज़ाइन अप्रूवल अनुरोध",
+    "body": "नमस्ते {{1}}, आपके कस्टमाइज्ड ड्रेस का एम्ब्रॉयडरी/डिज़ाइन सैंपल तैयार है। कृपया फोटो देखकर अप्रूवल दें ताकि काम आगे बढ़ाएं।",
+    "footer": "कस्टम मेड परिधान",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "डिज़ाइन ठीक है"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कुछ बदलाव चाहिए"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "संगीता जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_exchange_request_status",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "एक्सचेंज अनुरोध स्वीकृत",
+    "body": "नमस्ते {{1}}, आपके कपड़े के साइज एक्सचेंज का अनुरोध स्वीकार कर लिया गया है। कृपया बिल के साथ 3 दिनों के भीतर दुकान पधारें।",
+    "footer": "ग्राहक संतुष्टि प्रथम",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान आ रहा हूँ"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय पूछें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अशोक जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_customer_anniversary_gift",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "जन्मदिन सालगिरह विशेष उपहार",
+    "body": "नमस्ते {{1}}, आपके इस पावन अवसर पर दुकान {{2}} की ओर से ₹{{3}} का विशेष शॉपिंग गिफ्ट वाउचर। हमारी ओर से हार्दिक शुभकामनाएं!",
+    "footer": "फैमिली शॉपिंग पार्टनर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "गिफ्ट वाउचर क्लेम करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "धन्यवाद"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमती शर्मा",
+          "जैन गारमेंट्स",
+          "750"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_urgent_ready_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "अर्जेंट आर्डर तैयार है",
+    "body": "नमस्ते {{1}}, आपके विशेष अनुरोध पर आपका आर्डर #{{2}} समय से पहले तैयार कर दिया गया है। कृपया काउंटर से प्राप्त कर लें।",
+    "footer": "नाहटा एक्सप्रेस सर्विस",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "अभी लेने आ रहा हूँ"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "कपिल जी",
+          "URG-902"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_wedding_special_preview",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "वेडिंग ब्राइडल VIP प्रीव्यू",
+    "body": "नमस्ते {{1}}, शादी के सीजन के लिए नए हैंडमेड जोधपुरी सूट व लहंगों का एक्सक्लूसिव VIP प्रीव्यू शुरू हो गया है। अपना स्लॉट बुक करें।",
+    "footer": "रॉयल कलेक्शन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "VIP प्रीव्यू स्लॉट लें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कैटलॉग भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विकास जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_exclusive_fabric_alert",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "प्रीमियम कॉटन व सिल्क थान स्टॉक",
+    "body": "नमस्ते {{1}}, शुद्ध रेमंड व अरविन्द कॉटन व सिल्क शूटिंग-शर्टिंग का नया थान माल दुकान पर आ गया है। नया कुर्ता/सूट सिलवाने हेतु पधारें।",
+    "footer": "ओरिजिनल फैब्रिक",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कपड़े के फोटो देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान विज़िट करेंगे"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मुकेश जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_style_consultation_confirm",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "पर्सनल स्टाइलिस्ट अपॉइंटमेंट",
+    "body": "नमस्ते {{1}}, आपके पर्सनल वेडिंग स्टाइलिंग कंसल्टेशन की बुकिंग दिनांक {{2}} को {{3}} बजे तय हो गई है।",
+    "footer": "एक्सपर्ट एडवाइस",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "अपॉइंटमेंट कन्फर्म"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रीशेड्यूल करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "वरुण जी",
+          "06 नवम्बर",
+          "4:00 PM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_loyalty_tier_upgrade",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "गोल्ड क्लब में अपग्रेड",
+    "body": "बधाई हो {{1}}! आपकी नियमित शॉपिंग से आपका कार्ड 'गोल्ड प्रिविलेज' में अपग्रेड हो गया है। अब आपको हर खरीदारी पर अतिरिक्त छूट मिलेगी।",
+    "footer": "एक्सक्लूसिव मेम्बरशिप",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "गोल्ड बेनिफिट्स देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अनिल जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_end_of_season_clearance",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "एंड ऑफ सीजन फ्लैट 50 ️",
+    "body": "नमस्ते {{1}}, दुकान {{2}} पर ब्रांडेड टी-शर्ट, शर्ट्स और जींस पर 3 दिवसीय फ्लैट 50% क्लीयरेंस सेल शुरू हो गई है। स्टॉक सीमित है।",
+    "footer": "सीमित स्टॉक सेल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "सेल का समय बताएं"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "लोकेशन भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "हर्ष जी",
+          "नाहटा फैशन"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_size_inquiry_available",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "पूछा गया साइज उपलब्ध है",
+    "body": "नमस्ते {{1}}, आपने जिस ड्रेस का साइज '{{2}}' पूछा था, वह नए लॉट में आ गया है। क्या हम इसे 24 घंटे के लिए होल्ड रखें?",
+    "footer": "पर्सनल असिस्टेंट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ होल्ड रखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "अब नहीं चाहिए"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मोनिका जी",
+          "XL (42)"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_tailor_measurement_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "माप व ट्रायल रिमाइंडर",
+    "body": "नमस्ते {{1}}, मास्टर जी द्वारा आपका ट्रायल नाप लेने का समय {{2}} को {{3}} बजे निर्धारित है। कृपया समय पर पधारें।",
+    "footer": "मास्टर टेलरिंग",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय पर आऊंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कल का समय दें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रवि जी",
+          "आज शाम",
+          "6:30 PM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_dryclean_care_complete",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "स्टीम प्रेस व केयर रेडी",
+    "body": "नमस्ते {{1}}, आपके शेरवानी/कोट की प्रीमियम स्टीम प्रेस और पैकिंग पूरी हो चुकी है। आप सुरक्षित कवर में इसे प्राप्त कर सकते हैं।",
+    "footer": "गारमेंट केयर सर्विस",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "लेने आ रहा हूँ"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "गौरव जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clothing",
+    "industry": "Clothing / Fashion / Garments",
+    "name": "cloth_festive_combo_offer",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "फेस्टिव कॉम्बो 2 1 फ्री",
+    "body": "नमस्ते {{1}}, दुकान {{2}} पर कुर्ता-पायजामा और जैकेट के कॉम्बो सेट पर बाय 2 गेट 1 फ्री का विशेष त्यौहार ऑफर चल रहा है।",
+    "footer": "त्यौहार की खरीदारी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फोटो कैटलॉग देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान आऊंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विजय जी",
+          "नाहटा क्लॉथ"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_daily_gold_rate_bulletin",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दैनिक हॉलमार्क सोना चाँदी भाव",
+    "body": "नमस्ते {{1}}, आज {{2}} का 24K सोना ₹{{3}}/10g, 22K सोना ₹{{4}}/10g एवं शुद्ध चाँदी ₹{{5}}/kg है। प्रमाणित 100% HUID हॉलमार्क आभूषण।",
+    "footer": "जैन / नाहटा ज्वेलर्स",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "गहनों के नए डिज़ाइन"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रेट लॉक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमान वर्मा",
+          "02 नवम्बर",
+          "78,450",
+          "71,900",
+          "96,000"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_order_hallmark_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "आभूषण निर्माण पूर्ण",
+    "body": "नमस्ते {{1}}, आपके आर्डर #{{2}} के सोने के कंगन/हार का निर्माण व सरकारी HUID हॉलमार्किंग पूर्ण हो गई है। कृपया रसीद लाकर प्राप्त करें।",
+    "footer": "100% शुद्धता गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "आज लेने आऊंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "फाइनल बिल बताएं"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमती सोनी",
+          "JWL-5501"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_monthly_gold_scheme_due",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "स्वर्ण संचय योजना किस्त ️",
+    "body": "नमस्ते {{1}}, आपकी मासिक स्वर्ण योजना पासबुक #{{2}} की किस्त ₹{{3}} का देय दिनांक {{4}} है। घर बैठे सुरक्षित ऑनलाइन भुगतान करें।",
+    "footer": "बोनस किस्त योजना",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "UPI लिंक भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "पासबुक स्टेटस"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सुनीता जी",
+          "SCH-109",
+          "3000",
+          "05 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_old_gold_exchange_rate",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "पुराना सोना एक्सचेंज वैल्यू ️",
+    "body": "नमस्ते {{1}}, आपके पुराने सोने की कंप्यूटर कैरटमीटर टेस्टिंग पूर्ण हुई। कुल शुद्ध वजन {{2}} ग्राम आया है जिसकी वर्तमान एक्सचेंज वैल्यू ₹{{3}} है।",
+    "footer": "पारदर्शी कम्प्यूटराइज्ड जांच",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "नया जेवर चुनना है"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान आ रहा हूँ"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "नरेश जी",
+          "14.85",
+          "1,02,400"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_akshaya_tritiya_booking",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "अक्षय तृतीया शुभ स्वर्ण बुकिंग",
+    "body": "नमस्ते {{1}}, अक्षय तृतीया पर सोने के सिक्के व लाइटवेट आभूषणों की एडवांस बुकिंग पर बनवाई (Making Charges) पर 50% छूट। भाव सुरक्षित करें।",
+    "footer": "शुभ मुहूर्त खरीदारी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "सिक्के बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कैटलॉग देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "राकेश जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_dhanteras_vip_pass",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "धनतेरस VIP लाउंज एक्सेस",
+    "body": "नमस्ते {{1}}, धनतेरस की भीड़ से बचने के लिए आपके परिवार हेतु VIP लाउंज में पर्सनल आभूषण चयन स्लॉट आरक्षित है। अपना समय चुनें।",
+    "footer": "प्राइवेट ज्वैलरी व्यूइंग",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्लॉट कन्फर्म करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय बदलें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमान मित्तल"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_free_cleaning_polishing",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "निःशुल्क ज्वैलरी क्लीनिंग सेवा",
+    "body": "नमस्ते {{1}}, आगामी शादी/त्यौहार के उपलक्ष्य में हमारे सम्मानित ग्राहकों के पुराने गहनों की निःशुल्क अल्ट्रासोनिक पॉलिशिंग सेवा उपलब्ध है।",
+    "footer": "गहने चमकाएं बिल्कुल मुफ्त",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान कब आ सकते हैं?"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "पूजा जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_custom_cad_3d_preview",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "कस्टम जेवर 3D मॉडल तैयार",
+    "body": "नमस्ते {{1}}, आपके रिंग/पेंडेंट का 3D CAD कंप्यूटर डिज़ाइन तैयार है। आभूषण ढलाई शुरू करने से पहले कृपया डिज़ाइन की पुष्टि करें।",
+    "footer": "सटीक कस्टम कारीगरी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "3D वीडियो देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कारीगर से बात करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अमन जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_birthday_gold_coin_voucher",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "जन्मदिन पर चांदी का सिक्का उपहार",
+    "body": "नमस्ते {{1}}, आपके जन्मदिन पर ज्वैलर्स परिवार की ओर से हार्दिक बधाई! किसी भी आभूषण खरीदारी पर 10 ग्राम चांदी का सिक्का मुफ्त प्राप्त करें।",
+    "footer": "शुभकामना उपहार",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "ऑफर क्लेम करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान लोकेशन"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "संगीता जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_diamond_certificate_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "IGI GIA डायमंड प्रमाण पत्र",
+    "body": "नमस्ते {{1}}, आपके खरीदे गए हीरे के जेवर का मूल IGI लैब सर्टिफिकेट प्राप्त हो गया है। आप दुकान से ओरिजिनल कार्ड प्राप्त कर सकते हैं।",
+    "footer": "100% नेचुरल डायमंड",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "डिजिटल कॉपी भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान से लूंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "तरुण जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_gold_price_drop_alert",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "सोने के भाव में आज भारी गिरावट",
+    "body": "नमस्ते {{1}}, आज सोने के भाव में प्रति 10 ग्राम ₹{{2}} की बड़ी नरमी आई है। गहने खरीदने और बुकिंग करने का सबसे उत्तम अवसर है।",
+    "footer": "सीमित समय अवसर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "आज का भाव देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "बुकिंग करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "राजेश जी",
+          "1,200"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "jewellery",
+    "industry": "Jewellery / Gold / Bullion",
+    "name": "jewel_wedding_trousseau_consult",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "वेडिंग ब्राइडल ज्वैलरी सिटिंग",
+    "body": "नमस्ते {{1}}, आपकी शादी के संपूर्ण ब्राइडल सेट (हार, मांगटीका, नथ, कंगन) के मिलान व चयन हेतु सिटिंग दिनांक {{2}} को {{3}} बजे तय है।",
+    "footer": "राजपूती व मॉडर्न ब्राइडल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "सिटिंग कन्फर्म"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय बदलें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "नेहा जी",
+          "08 नवम्बर",
+          "3:00 PM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_doctor_appointment_confirm",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "डॉक्टर अपॉइंटमेंट पुष्टि",
+    "body": "नमस्ते {{1}}, डॉ. {{2}} से आपका परामर्श दिनांक {{3}} को समय {{4}} बजे टोकन #{{5}} पर निर्धारित है। कृपया 10 मिनट पूर्व पधारें।",
+    "footer": "स्वास्थ्य एवं आरोग्य सेवा",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कन्फर्म है आऊंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रीशेड्यूल करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रमेश जी",
+          "नाहटा (MD)",
+          "04 नवम्बर",
+          "11:30 AM",
+          "14"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_lab_report_ready_download",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "जांच रिपोर्ट तैयार है",
+    "body": "नमस्ते {{1}}, आपकी पैथोलॉजी/ब्लड टेस्ट रिपोर्ट (आईडी #{{2}}) तैयार है। आप नीचे दिए बटन से डिजिटल PDF रिपोर्ट डाउनलोड कर सकते हैं।",
+    "footer": "सटीक डायग्नोस्टिक्स",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "PDF रिपोर्ट भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "डॉक्टर से बात करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सुनील जी",
+          "LAB-9921"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_medicine_refill_reminder",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दवा समाप्त होने का रिमाइंडर",
+    "body": "नमस्ते {{1}}, आपके नियमित पर्चे (BP/शुगर/थायरॉइड) की दवाइयां 3 दिन में समाप्त होने वाली हैं। क्या हम नई दवाइयां घर भिजवा दें?",
+    "footer": "100% असली दवाइयां",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ दवाइयां भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "पर्चा बदलना है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमती गुप्ता"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_token_queue_live_status",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "लाइव ओपीडी टोकन अपडेट",
+    "body": "नमस्ते {{1}}, ओपीडी में अभी टोकन नंबर {{2}} चल रहा है। आपका टोकन #{{3}} है। अनुमानित प्रतीक्षा समय लगभग {{4}} मिनट है।",
+    "footer": "समय की बचत",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "क्लिनिक पहुँच गया"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अशोक जी",
+          "09",
+          "12",
+          "15"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_vaccination_schedule_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "टीकाकरण वैक्सीन रिमाइंडर",
+    "body": "नमस्ते {{1}}, बच्चे {{2}} के टीकाकरण (डोज़: {{3}}) का समय आ गया है। कृपया दिनांक {{4}} से पूर्व क्लिनिक पर टीका लगवाएं।",
+    "footer": "शिशु स्वास्थ्य सुरक्षा",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्लॉट बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "डॉक्टर से पूछें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीपक जी",
+          "आरव",
+          "एमएमआर बूस्टर",
+          "10 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_free_health_camp_invite",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "निशुल्क स्वास्थ्य जांच शिविर",
+    "body": "नमस्ते {{1}}, इस रविवार क्लिनिक पर निशुल्क ब्लड प्रेशर, रैंडम शुगर व ईसीजी जांच शिविर आयोजित है। विशेषज्ञ डॉक्टरों की सलाह पाएं।",
+    "footer": "जन स्वास्थ्य सेवा",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "शिविर में नाम लिखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्थान व समय"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सज्जन जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_dental_checkup_courtesy",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "6 महीने डेंटल क्लीनिंग फॉलोअप",
+    "body": "नमस्ते {{1}}, आपके पिछले डेंटल ट्रीटमेंट को 6 महीने हो गए हैं। दांतों की स्वस्थ सुरक्षा व स्केलिंग चेकअप हेतु समय तय करें।",
+    "footer": "मुस्कान की देखभाल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "डेंटल चेकअप बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "बाद में कराएंगे"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मोनिका जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_pharmacy_home_delivery",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दवा होम डिलीवरी डिस्पैच",
+    "body": "नमस्ते {{1}}, आपके मेडिकल पर्चे की दवाइयां बिल ₹{{2}} पैक होकर निकल चुकी हैं। डिलीवरी बॉय 30 मिनट में पहुंचेगा।",
+    "footer": "एक्सप्रेस फार्मेसी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "UPI द्वारा भुगतान"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कैश दूंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "कपूर जी",
+          "640"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_post_op_recovery_check",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "उपचार के बाद स्वास्थ्य हाल चाल",
+    "body": "नमस्ते {{1}}, कल के परामर्श/प्रोसीजर के बाद आपकी तबीयत कैसी है? क्या दर्द में आराम है या कोई अन्य असुविधा हो रही है?",
+    "footer": "आपकी सेहत हमारी प्राथमिकता",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "अब आराम है"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "डॉक्टर से बात कराएं"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सुरेश जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_full_body_package_offer",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "सम्पूर्ण शरीर जांच पैकेज",
+    "body": "नमस्ते {{1}}, पूरे परिवार के लिए 65 जरूरी टेस्ट (लिवर, किडनी, लिपिड, थायरॉइड, विटामिन) मात्र ₹{{2}} में उपलब्ध। फ्री होम सैंपल कलेक्शन।",
+    "footer": "प्रिवेंटिव हेल्थकेयर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "घर पर ब्लड टेस्ट बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "टेस्ट लिस्ट देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विनोद जी",
+          "699"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_ayurveda_diet_plan_share",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "वैद्य जी का व्यक्तिगत डाइट चार्ट",
+    "body": "नमस्ते {{1}}, आपकी प्रकृति के अनुसार आपका व्यक्तिगत आयुर्वेदिक आहार एवं परहेज चार्ट तैयार कर दिया गया है।",
+    "footer": "प्राकृतिक आरोग्य",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "डाइट चार्ट भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "शांतिलाल जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "clinic",
+    "industry": "Clinic / Doctor / Healthcare / Pharmacy",
+    "name": "clinic_eye_spectacles_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "चश्मा बनकर तैयार है",
+    "body": "नमस्ते {{1}}, आपका नया एंटी-ग्लेयर पावर चश्मा बनकर तैयार है। आप दुकान/क्लिनिक आकर फिटिंग चेक करके प्राप्त कर सकते हैं।",
+    "footer": "क्लियर विज़न ऑप्टिक्स",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "लेने आ रहा हूँ"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कूरियर कर दें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "पंकज जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_appointment_booked_confirm",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "सैलून अपॉइंटमेंट कन्फर्म",
+    "body": "नमस्ते {{1}}, आपका ग्रूमिंग/हेयरकट सेशन दिनांक {{2}} को समय {{3}} बजे स्टाइलिस्ट {{4}} के साथ बुक हो चुका है।",
+    "footer": "प्रीमियम सैलून एक्सपीरियंस",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय पर आऊंगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रीशेड्यूल करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अक्षत जी",
+          "03 नवम्बर",
+          "04:30 PM",
+          "समीर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_bridal_pre_booking_offer",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "ब्राइडल मेकओवर प्री बुकिंग",
+    "body": "नमस्ते {{1}}, वेडिंग सीजन के लिए HD व एयरब्रश ब्राइडल पैकेज की प्री-बुकिंग पर फ्री प्री-ब्राइडल स्पा और 20% की विशेष छूट पाएं।",
+    "footer": "रॉयल ब्राइडल स्टूडियो",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "पैकेज विवरण देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "ट्रायल बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "प्रिया जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_hair_spa_care_reminder",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "मंथली हेयर स्पा व केयर",
+    "body": "नमस्ते {{1}}, आपके पिछले हेयर स्मूदनिंग/कैरटिन ट्रीटमेंट का 1 महीना पूरा हो गया है। बालों की चमक बनाए रखने हेतु स्पा सेशन शेड्यूल करें।",
+    "footer": "हेयर केयर एक्सपर्ट्स",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्लॉट बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "अगले हफ्ते कराएंगे"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सीमा जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_weekday_happy_hours",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "हैप्पी आवर्स फ्लैट 30 ऑफ",
+    "body": "नमस्ते {{1}}, सोमवार से गुरुवार दोपहर 12 से 4 बजे के बीच फेशियल, मेनीक्योर और पेडीक्योर पर फ्लैट 30% छूट का लाभ उठाएं।",
+    "footer": "वीकडे रिलैक्सेशन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "अपॉइंटमेंट लें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "मेनू और रेट्स"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "कविता जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_birthday_glow_voucher",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "जन्मदिन स्पेशल ब्यूटी वाउचर",
+    "body": "नमस्ते {{1}}, आपके जन्मदिन के महीने में हमारी ओर से ₹{{2}} का मानार्थ ब्यूटी वाउचर! आज ही अपना ग्लो सेशन बुक करें।",
+    "footer": "हैप्पी बर्थडे स्पेशल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "वाउचर क्लेम करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सेवाएं देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीक्षा जी",
+          "500"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_post_service_care_tips",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "कलर व कैरटिन केयर टिप्स",
+    "body": "नमस्ते {{1}}, आज के हेयर कलर सेशन के बाद कृपया 48 घंटे तक शैम्पू न करें और हमेशा सल्फेट-फ्री उत्पाद ही इस्तेमाल करें।",
+    "footer": "आफ्टर केयर गाइड",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "सल्फेट-फ्री शैम्पू मंगाएं"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मेघा जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_membership_points_balance",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "सैलून रिवॉर्ड पॉइंट स्टेटस",
+    "body": "नमस्ते {{1}}, आपके सैलून रिवॉर्ड खाते में {{2}} पॉइंट्स उपलब्ध हैं जिनकी वैल्यू ₹{{3}} है। आप अगली विजिट में इन्हें रिडीम कर सकते हैं।",
+    "footer": "रिवॉर्ड क्लब",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "रिडीम करके स्लॉट लें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रोहन जी",
+          "350",
+          "350"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_keratin_botox_combo",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "हेयर बोटोक्स व कैरटिन ऑफर ️",
+    "body": "नमस्ते {{1}}, रूखे व बेजान बालों को दें रेशमी चमक। इस महीने हेयर बोटोक्स पर फ्लैट ₹{{2}} की छूट और फ्री आर्गन ऑयल सीरम।",
+    "footer": "सिल्की स्मूथ हेयर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "ऑफर बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सलाह लें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अंजलि जी",
+          "1,000"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_urgent_slot_opening",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "आज शाम का स्लॉट रिक्त",
+    "body": "नमस्ते {{1}}, आपने जिस समय के लिए वेटिंग में नाम दिया था, आज शाम {{2}} बजे का स्लॉट उपलब्ध हो गया है। क्या आप आना चाहेंगे?",
+    "footer": "प्रायोरिटी स्लॉट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ स्लॉट लॉक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "नहीं आ पाऊंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "गौरव जी",
+          "06:00 PM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "salon",
+    "industry": "Salon / Beauty Parlour / Spa",
+    "name": "salon_service_satisfaction_review",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "आज का सैलून अनुभव कैसा रहा",
+    "body": "नमस्ते {{1}}, आज स्टाइलिस्ट द्वारा दी गई सर्विस आपको कैसी लगी? आपकी रेटिंग हमारे काम को और बेहतर बनाने में मदद करती है।",
+    "footer": "आपकी राय महत्वपूर्ण है",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "5 स्टार बहुत बढ़िया"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सुधार की जरूरत"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "प्रीति जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_table_reservation_confirmed",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "टेबल आरक्षण कन्फर्म ️",
+    "body": "नमस्ते {{1}}, रेस्टोरेंट {{2}} में {{3}} व्यक्तियों के लिए आपकी टेबल दिनांक {{4}} को समय {{5}} बजे सफलतापूर्वक आरक्षित हो गई है।",
+    "footer": "स्वादिष्ट आतिथ्य सत्कार",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "लोकेशन देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कैंसिल / बदलाव"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "आलोक जी",
+          "नाहटा रॉयल डाइन",
+          "4",
+          "05 नवम्बर",
+          "08:30 PM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_takeaway_order_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "गरमा गरम खाना तैयार",
+    "body": "नमस्ते {{1}}, आपका टेकअवे आर्डर #{{2}} किचन से पैक होकर तैयार है। कृपया काउंटर से गरमा-गरम भोजन प्राप्त कर लें।",
+    "footer": "ताजा व शुद्ध भोजन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "5 मिनट में आ रहा हूँ"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विवेक जी",
+          "FD-802"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_custom_cake_order_preview",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "बर्थडे कस्टमाइज्ड केक तैयार",
+    "body": "नमस्ते {{1}}, आपके आर्डर का {{2}} फ्लेवर का थीम केक तैयार हो गया है। कृपया केक का फाइनल फोटो देखकर पुष्टि करें।",
+    "footer": "बेकर्स डिलाइट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फोटो बहुत सुंदर है"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "नाम चेक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "निधि जी",
+          "चॉकलेट ट्रफल"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_sweet_festive_preorder",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "त्यौहारी शुद्ध देशी घी मिठाई प्री बुकिंग",
+    "body": "नमस्ते {{1}}, शुद्ध देशी घी के काजू कतली, मोतीचूर लड्डू व मलाई पेड़े की त्यौहारी अग्रिम बुकिंग पर 10% की छूट और आकर्षक गिफ्ट बॉक्स पाएं।",
+    "footer": "परंपरा व शुद्धता",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "मिठाई रेट लिस्ट"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "प्री-ऑर्डर बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मुकेश जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_weekend_family_buffet_pass",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "वीकेंड अनलिमिटेड रॉयल बुफे",
+    "body": "नमस्ते {{1}}, इस शनिवार और रविवार अनलिमिटेड स्टार्टर्स, मेन कोर्स और डेसर्ट बुफे मात्र ₹{{2}} में। पूरे परिवार के साथ पधारें।",
+    "footer": "फैमिली बुफे स्पेशल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "टेबल बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "बुफे मेनू देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अजय जी",
+          "499"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_live_party_catering_inquiry",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "पार्टी व कैटरिंग कोटेशन तैयार",
+    "body": "नमस्ते {{1}}, आपके पारिवारिक आयोजन ({{2}} गेस्ट) के लिए कैटरिंग मेनू व प्रति प्लेट कोटेशन तैयार है। कृपया विवरण देखें।",
+    "footer": "आउटडोर व बैंक्वेट कैटरिंग",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कोटेशन भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "मैनेजर से बात करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सुभाष जी",
+          "150"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_food_delivery_rider_dispatch",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "भोजन डिलीवरी के लिए रवाना",
+    "body": "नमस्ते {{1}}, आपका गरमा-गरम खाना लेकर राइडर {{2}} निकल चुका है। 15-20 मिनट में आपके पते पर पहुंचेगा।",
+    "footer": "हॉट एंड फ्रेश डिलीवरी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "राइडर का नंबर"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीपक जी",
+          "राजू"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_chef_special_dish_launch",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "शेफ की नई सिग्नेचर डिश लॉन्च",
+    "body": "नमस्ते {{1}}, हमारे मेनू में शामिल हुआ है शेफ का स्पेशल दम बिरयानी व पनीर लबाबदार। आज ही स्वाद चखें और पाएं 15% इंट्रोडक्टरी छूट।",
+    "footer": "स्वाद का नया ठिकाना",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "ऑर्डर ऑनलाइन"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "डिश विवरण"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "तरुण जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_dine_in_bill_loyalty_earned",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "डाइन इन बिल व कैशबैक रसीद",
+    "body": "नमस्ते {{1}}, रेस्टोरेंट में पधारने हेतु धन्यवाद! आपका बिल ₹{{2}} रहा और आपको ₹{{3}} का रिवॉर्ड कैशबैक प्राप्त हुआ है।",
+    "footer": "पुनः पधारें",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बिल डाउनलोड करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "फीडबैक दें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "समीर जी",
+          "1,850",
+          "92"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "restaurant",
+    "industry": "Restaurant / Cafe / Sweets / Bakery",
+    "name": "rest_midweek_pizza_burger_combo",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "मिड वीक पिज्जा कॉम्बो धमाका",
+    "body": "नमस्ते {{1}}, बुधवार की शाम को बनाएं खास! 1 लार्ज पिज्जा के साथ 1 गार्लिक ब्रेड और 2 बेवरेज बिल्कुल फ्री।",
+    "footer": "कैफे डिलाइट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "कॉम्बो आर्डर करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रोहित जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_site_visit_appointment_fixed",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "प्रॉपर्टी साइट विजिट निर्धारित",
+    "body": "नमस्ते {{1}}, प्रोजेक्ट {{2}} की साइट विजिट दिनांक {{3}} को समय {{4}} बजे तय है। हमारे प्रतिनिधि {{5}} आपको साइट पर मिलेंगे।",
+    "footer": "विश्वसनीय प्रॉपर्टी सलाहकार",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "साइट लोकेशन भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय रीशेड्यूल करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्रीमान जैन",
+          "ग्रीन वैली हाइट्स",
+          "05 नवम्बर",
+          "11:00 AM",
+          "विक्रम जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_new_plot_project_launch",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "प्राइम लोकेशन आवासीय प्लॉट लॉन्च",
+    "body": "नमस्ते {{1}}, शहर के मुख्य मार्ग पर सरकारी अप्रूव्ड टाउनशिप में ₹{{2}} प्रति वर्ग गज से आवासीय प्लॉट उपलब्ध। तुरंत रजिस्ट्री व पजेशन।",
+    "footer": "सुनहरा निवेश अवसर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "लेआउट प्लान भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "साइट विजिट बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अशोक जी",
+          "8,500"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_construction_progress_update",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "मकान निर्माण प्रगति रिपोर्ट ️",
+    "body": "नमस्ते {{1}}, आपके यूनिट #{{2}} के निर्माण का लेंटर/स्ट्रक्चर कार्य सफलता से पूरा हो गया है। प्रगति की तस्वीरें व वीडियो संलग्न हैं।",
+    "footer": "गुणवत्ता निर्माण गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फोटो/वीडियो देखें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "इंजीनियर से बात करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "महेश जी",
+          "B-402"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_demand_note_due_date",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "किस्त व डिमांड नोट सूचना",
+    "body": "नमस्ते {{1}}, आपकी फ्लैट यूनिट #{{2}} की स्ट्रक्चरल किस्त ₹{{3}} का देय दिनांक {{4}} है। बैंक ट्रांसफर हेतु खाता विवरण उपलब्ध है।",
+    "footer": "आधिकारिक डिमांड नोट",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बैंक डिटेल्स भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रसीद प्राप्त करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सुरेश जी",
+          "A-108",
+          "2,50,000",
+          "15 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_rental_agreement_renewal",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "रेंट एग्रीमेंट नवीनीकरण रिमाइंडर",
+    "body": "नमस्ते {{1}}, आपकी किराये की प्रॉपर्टी #{{2}} के 11 महीने का एग्रीमेंट {{3}} को समाप्त हो रहा है। नवीनीकरण हेतु ड्राफ्ट तैयार है।",
+    "footer": "प्रॉपर्टी मैनेजमेंट सेवा",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "एग्रीमेंट रिन्यू करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "खाली करना है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "कमलेश जी",
+          "फ्लैट 301",
+          "30 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_ready_to_move_flat_deal",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "रेडी टू मूव 2 3 BHK फ्लैट्स",
+    "body": "नमस्ते {{1}}, प्राइम लोकेशन पर रेडी-टू-मूव 2 एवं 3 BHK लक्जरी फ्लैट्स मात्र ₹{{2}} लाख से शुरू। 90% तक बैंक लोन सुविधा उपलब्ध।",
+    "footer": "अपने सपनों का घर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फ्लोर प्लान भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सैंपल फ्लैट देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "राजेन्द्र जी",
+          "35"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_possession_handover_schedule",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "गृह प्रवेश व चाबी सुपुर्दगी सूचना",
+    "body": "बधाई हो {{1}}! आपकी यूनिट #{{2}} पजेशन के लिए पूर्ण तैयार है। चाबी सुपुर्दगी व औपचारिकताएं दिनांक {{3}} को पूरी की जाएंगी।",
+    "footer": "शुभ गृह प्रवेश",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "चाबी लेने आऊंगा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दिलीप जी",
+          "C-204",
+          "10 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "realestate",
+    "industry": "Real Estate / Property / Construction",
+    "name": "real_commercial_shop_investment",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "हाई स्ट्रीट कमर्शियल दुकान निवेश",
+    "body": "नमस्ते {{1}}, मुख्य चौराहे पर स्थित नए मॉल/कॉम्प्लेक्स में ग्राउंड फ्लोर दुकानें उपलब्ध। हर महीने गारंटीड किराया रिटर्न का अवसर।",
+    "footer": "हाई रेंटल यील्ड निवेश",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "ROI व रेंट विवरण"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "दुकान बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मनीष जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_student_attendance_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दैनिक उपस्थिति सूचना",
+    "body": "आदरणीय अभिभावक, आपका बच्चा {{1}} आज दिनांक {{2}} को संस्थान में अनुपस्थित रहा है। कृपया अनुपस्थिति का कारण सूचित करें।",
+    "footer": "विद्यार्थी अनुशासन व प्रगति",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बीमारी के कारण"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "पारिवारिक कार्य"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "आयुष शर्मा",
+          "03 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_exam_report_card_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "परीक्षा परिणाम रिपोर्ट कार्ड",
+    "body": "नमस्ते अभिभावक, {{1}} का हालिया टेस्ट परिणाम घोषित हो चुका है। प्राप्त अंक: {{2}} (रैंक: {{3}})। विस्तृत रिपोर्ट कार्ड उपलब्ध है।",
+    "footer": "अकादमिक प्रदर्शन मूल्यांकन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "रिपोर्ट कार्ड डाउनलोड"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "शिक्षक से चर्चा"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "रोहन",
+          "88/100",
+          "04"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_monthly_fee_reminder",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "मासिक शिक्षण शुल्क देय सूचना",
+    "body": "नमस्ते अभिभावक, विद्यार्थी {{1}} के माह {{2}} का कोचिंग/स्कूल शुल्क ₹{{3}} देय है। लेट फीस से बचने हेतु {{4}} से पहले जमा करें।",
+    "footer": "ऑनलाइन फीस पोर्टल",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "UPI लिंक भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "फीस रसीद देखें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "प्रियांशु",
+          "नवम्बर",
+          "2,200",
+          "10 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_new_crash_course_batch",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "बोर्ड व प्रवेश परीक्षा क्रैश कोर्स",
+    "body": "नमस्ते {{1}}, कक्षा 10वीं/12वीं एवं नीट/आईआईटी हेतु 60-दिवसीय स्पेशल क्रैश कोर्स नया बैच 10 तारीख से शुरू। टॉप रैंकर्स टीम से सीखें।",
+    "footer": "सफलता का भरोसेमंद संस्थान",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फ्री डेमो क्लास लें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सिलेबस व फीस"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीपक जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_ptm_meeting_schedule",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "अभिभावक शिक्षक बैठक PTM",
+    "body": "नमस्ते अभिभावक, विद्यार्थी {{1}} की प्रगति हेतु PTM दिनांक {{2}} को प्रातः {{3}} बजे आयोजित है। आपकी उपस्थिति अनिवार्य है।",
+    "footer": "बालक के सर्वांगीण विकास हेतु",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "उपस्थित रहूँगा"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "समय बदलें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अनुष्का",
+          "07 नवम्बर",
+          "10:00 AM"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_scholarship_exam_invite",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "100 स्कॉलरशिप परीक्षा",
+    "body": "नमस्ते {{1}}, संस्थान द्वारा आयोजित राज्य-स्तरीय प्रतिभा खोज परीक्षा में भाग लें और पाएं 100% तक की ट्यूशन फीस छूट व लैपटॉप पुरस्कार।",
+    "footer": "मेधावी छात्र प्रोत्साहन",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "निशुल्क रजिस्ट्रेशन"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "सैंपल पेपर भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अभिषेक जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_holiday_closure_notice",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "त्यौहार अवकाश आधिकारिक सूचना ️",
+    "body": "प्रिय अभिभावक व विद्यार्थी, {{1}} पर्व के उपलक्ष्य में संस्थान दिनांक {{2}} से {{3}} तक बंद रहेगा। नियमित कक्षाएं पुनः शुरू होंगी।",
+    "footer": "आधिकारिक संस्थान सूचना",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "होमवर्क शीट भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दीपावली",
+          "01 नवम्बर",
+          "05 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "education",
+    "industry": "Education / Coaching / Training",
+    "name": "edu_spoken_english_coding_camp",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "स्पोकन इंग्लिश व कंप्यूटर कोडिंग बूटकैंप",
+    "body": "नमस्ते {{1}}, अपने बच्चे को बनाएं फ्यूचर-रेडी! मात्र 30 दिनों में धाराप्रवाह इंग्लिश बोलना और बेसिक कोडिंग/AI सीखें। नया बैच सीमित सीटें।",
+    "footer": "स्किल डेवलपमेंट एकेडमी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "डेमो क्लास बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "कोर्स डिटेल्स"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "संजय जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "automobile",
+    "industry": "Automobile / Garage / Car-Bike Service",
+    "name": "auto_vehicle_service_due_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "गाड़ी सर्विसिंग का समय हो गया",
+    "body": "नमस्ते {{1}}, आपके वाहन {{2}} (नंबर: {{3}}) की नियमित सर्विस का समय आ गया है। इंजन की लंबी उम्र व सुरक्षा हेतु सर्विस बुक करें।",
+    "footer": "अधिकृत ऑटो सर्विस सेंटर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "सर्विस स्लॉट बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "फ्री पिकअप भेजें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "मुकेश जी",
+          "Maruti Swift",
+          "RJ14-CB-2041"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "automobile",
+    "industry": "Automobile / Garage / Car-Bike Service",
+    "name": "auto_service_completed_ready",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "वाहन सर्विस पूर्ण व तैयार",
+    "body": "नमस्ते {{1}}, आपकी गाड़ी {{2}} का सर्विस व वाशिंग कार्य पूरा हो चुका है। कुल बिल राशि ₹{{3}} है। आप वर्कशॉप से गाड़ी प्राप्त कर सकते हैं।",
+    "footer": "गुणवत्ता व पारदर्शिता",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बिल विवरण भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "गाड़ी लेने आ रहा हूँ"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "सतीश जी",
+          "Hyundai Creta",
+          "3,450"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "automobile",
+    "industry": "Automobile / Garage / Car-Bike Service",
+    "name": "auto_insurance_puc_expiry_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "गाड़ी बीमा PUC समाप्ति चेतावनी ️",
+    "body": "नमस्ते {{1}}, आपके वाहन {{2}} का इंश्योरेंस/PUC दिनांक {{3}} को समाप्त हो रहा है। भारी चालान से बचने हेतु तुरंत 1-क्लिक में रिन्यू कराएं।",
+    "footer": "जीरो डेप्रिसिएशन बीमा",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बीमा कोटेशन भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "रिन्यू करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "विकास जी",
+          "Honda City",
+          "12 नवम्बर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "automobile",
+    "industry": "Automobile / Garage / Car-Bike Service",
+    "name": "auto_parts_approval_estimate",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "स्पेयर पार्ट्स रिप्लेसमेंट एस्टीमेट",
+    "body": "नमस्ते {{1}}, निरीक्षण के दौरान गाड़ी का {{2}} खराब पाया गया है। नए ओरिजिनल पार्ट की अनुमानित लागत ₹{{3}} है। क्या काम शुरू करें?",
+    "footer": "ओरिजिनल पार्ट्स गारंटी",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ अप्रूवल है"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "मैकेनिक से बात करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अनिल जी",
+          "फ्रंट ब्रेक पैड सेट",
+          "1,800"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "automobile",
+    "industry": "Automobile / Garage / Car-Bike Service",
+    "name": "auto_monsoon_winter_checkup_camp",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "निशुल्क 40 पॉइंट वाहन चेकअप कैंप ️",
+    "body": "नमस्ते {{1}}, सुरक्षित ड्राइविंग के लिए निशुल्क 40-पॉइंट कार/बाइक चेकअप कैंप आयोजित है। ब्रेक, बैटरी, टायर जांच व 20% लेबर छूट।",
+    "footer": "रोड सेफ्टी चेकअप",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "फ्री चेकअप बुक करें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "वर्कशॉप लोकेशन"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "दिनेश जी"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "b2b",
+    "industry": "General B2B Wholesale / Manufacturing",
+    "name": "b2b_wholesale_dispatch_bilty_alert",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "थोक माल डिस्पैच व बिल्टी सूचना",
+    "body": "नमस्ते {{1}}, आपका थोक आर्डर ({{2}} नग) ट्रांसपोर्ट {{3}} से रवाना कर दिया गया है। बिल्टी / LR नंबर: {{4}}। ई-वे बिल संलग्न है।",
+    "footer": "होलसेल सप्लाई डिपो",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "बिल्टी कॉपी भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "अकाउंट स्टेटमेंट"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "श्री ट्रेडर्स",
+          "25 कार्टन",
+          "जयपुर गोल्डन",
+          "LR-88401"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "b2b",
+    "industry": "General B2B Wholesale / Manufacturing",
+    "name": "b2b_wholesale_rate_list_pdf",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "नया थोक भाव व कैटलॉग",
+    "body": "नमस्ते {{1}}, इस सप्ताह का संशोधित थोक मूल्य (Wholesale Price List) जारी कर दिया गया है। थोक लॉट पर विशेष कैश डिस्काउंट उपलब्ध है।",
+    "footer": "डायरेक्ट मैन्युफैक्चरर रेट्स",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "थोक रेट PDF भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "आर्डर बुक करें"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "महालक्ष्मी स्टोर"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "b2b",
+    "industry": "General B2B Wholesale / Manufacturing",
+    "name": "b2b_payment_reconciliation_statement",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "मासिक खाता लेजर समाधान",
+    "body": "नमस्ते {{1}}, माह {{2}} का आपका खाता लेजर तैयार है। क्लोजिंग बैलेंस ₹{{3}} बकाया है। कृपया समाधान की पुष्टि करें।",
+    "footer": "व्यापारिक खाता विभाग",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "लेजर PDF भेजें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "पेमेंट कर दिया है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "अग्रवाल ब्रदर्स",
+          "अक्टूबर",
+          "48,500"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "b2b",
+    "industry": "General B2B Wholesale / Manufacturing",
+    "name": "b2b_bulk_preorder_incentive",
+    "category": "MARKETING",
+    "language": "hi",
+    "header": "सीजनल बल्क बुकिंग स्कीम",
+    "body": "नमस्ते {{1}}, 100 पेटी या अधिक की अग्रिम थोक बुकिंग पर 5% अतिरिक्त व्यापारी इंसेंटिव और 30 दिन की ब्याज-मुक्त क्रेडिट सुविधा पाएं।",
+    "footer": "व्यापारी स्पेशल ऑफर",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्कीम विवरण समझें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "बल्क आर्डर लिखवाएं"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "जैन एजेंसीज"
+        ]
+      ]
+    }
+  },
+  {
+    "category_id": "b2b",
+    "industry": "General B2B Wholesale / Manufacturing",
+    "name": "b2b_stock_replenishment_check",
+    "category": "UTILITY",
+    "language": "hi",
+    "header": "दुकान स्टॉक रीफिल इंक्वायरी",
+    "body": "नमस्ते {{1}}, आपके एरिया में हमारी सप्लाई गाड़ी कल आ रही है। क्या आपकी दुकान पर किसी माल की कमी है जो कल लोड करवानी हो?",
+    "footer": "सप्लाई व वितरण नेटवर्क",
+    "buttons": [
+      {
+        "type": "QUICK_REPLY",
+        "text": "हाँ आर्डर लिख लें"
+      },
+      {
+        "type": "QUICK_REPLY",
+        "text": "स्टॉक पर्याप्त है"
+      }
+    ],
+    "example": {
+      "body_text": [
+        [
+          "गुप्ता प्रोविजन"
+        ]
+      ]
+    }
+  }
+]

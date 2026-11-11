@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   ShieldAlert, Sparkles, Users, DollarSign, TrendingUp, Activity,
   Sliders, Gift, Eye, Send, CheckCircle2, Lock, Search, Zap,
@@ -19,6 +19,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Switch } from '@/components/ui/switch';
 import { Textarea } from '@/components/ui/textarea';
 import { useAuth } from '@/hooks/use-auth';
+import { isFounderEmail } from '@/lib/auth/founder';
 import Link from 'next/link';
 import { cn } from '@/lib/utils';
 
@@ -133,7 +134,7 @@ const StatusBadge = ({ status }: { status: TenantStatus }) => {
 
 export default function SuperAdminPage() {
   const { accountRole, profile } = useAuth();
-  const isSuperAdmin = accountRole === 'owner' || profile?.email === 'mohit12836@gmail.com';
+  const isSuperAdmin = isFounderEmail(profile?.email);
 
   // ── State ──
   const [tenants, setTenants] = useState<Tenant[]>(INITIAL_TENANTS);
@@ -153,6 +154,45 @@ export default function SuperAdminPage() {
   const [walletAdjustAmount, setWalletAdjustAmount] = useState('');
   const [walletNote, setWalletNote] = useState('');
   const [customPromptText, setCustomPromptText] = useState('');
+  const [liveLoaded, setLiveLoaded] = useState(false);
+
+  useEffect(() => {
+    if (!isSuperAdmin) return;
+    fetch('/api/superadmin/tenants')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data) => {
+        if (data?.tenants && Array.isArray(data.tenants)) {
+          const mapped: Tenant[] = data.tenants.map((t: {
+            id: string;
+            name: string;
+            ownerEmail: string;
+            whatsappConnected: boolean;
+            phoneNumberId: string | null;
+            aiActive: boolean;
+            botPaused: boolean;
+            contactCount: number;
+            conversationCount: number;
+          }) => ({
+            id: t.id,
+            name: t.name,
+            ownerPhone: t.phoneNumberId || t.ownerEmail,
+            industry: t.whatsappConnected ? 'Cloud API Live' : 'Pending WhatsApp Setup',
+            city: `${t.contactCount} contacts`,
+            mode: 'B2C',
+            tier: t.whatsappConnected ? 'Pro' : 'Trial',
+            walletBalance: t.whatsappConnected ? 500 : 99,
+            totalChatsToday: t.conversationCount,
+            monthlyRevenue: t.whatsappConnected ? '₹1,499' : '₹0',
+            status: t.whatsappConnected ? 'active' : 'trial',
+            wacaHealth: t.whatsappConnected ? 'GREEN' : 'YELLOW',
+            botPaused: t.botPaused,
+          }));
+          setTenants(mapped);
+          setLiveLoaded(true);
+        }
+      })
+      .catch(() => {});
+  }, [isSuperAdmin]);
 
   // Rule Injection
   const [ruleCategory, setRuleCategory] = useState('All Coaching Academies');
@@ -207,8 +247,17 @@ export default function SuperAdminPage() {
     }, 1400);
   };
 
-  const handleToggleBotPause = (id: string) => {
-    setTenants((prev) => prev.map((t) => t.id === id ? { ...t, botPaused: !t.botPaused } : t));
+  const handleToggleBotPause = async (id: string) => {
+    const target = tenants.find((t) => t.id === id);
+    const nextPaused = target ? !target.botPaused : true;
+    setTenants((prev) => prev.map((t) => t.id === id ? { ...t, botPaused: nextPaused } : t));
+    if (liveLoaded) {
+      await fetch('/api/superadmin/tenants', {
+        method: 'PATCH',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ accountId: id, botPaused: nextPaused }),
+      }).catch(() => {});
+    }
   };
 
   const handleWalletAdjust = () => {

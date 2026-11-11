@@ -742,12 +742,18 @@ export function WhatsAppConfig() {
           </div>
           <div className="relative flex justify-center text-xs uppercase">
             <span className="bg-background px-3 text-muted-foreground font-semibold">
-              Or Connect Manually
+              Advanced Developer Setup (Manual Connection)
             </span>
           </div>
         </div>
 
-        {/* API Credentials */}
+        <Accordion>
+          <AccordionItem className="border border-border rounded-xl px-4 bg-card/40">
+            <AccordionTrigger className="text-xs font-semibold text-muted-foreground hover:text-foreground hover:no-underline py-3">
+              Show / Hide Manual API Keys & Tokens (For Developers Only)
+            </AccordionTrigger>
+            <AccordionContent className="space-y-6 pt-2 pb-4">
+              {/* API Credentials */}
         <Card>
           <CardHeader>
             <CardTitle className="text-foreground">{t('apiCredentialsTitle')}</CardTitle>
@@ -968,6 +974,10 @@ export function WhatsAppConfig() {
             </Button>
           )}
         </div>
+
+            </AccordionContent>
+          </AccordionItem>
+        </Accordion>
       </div>
 
       {/* Setup Instructions Sidebar */}

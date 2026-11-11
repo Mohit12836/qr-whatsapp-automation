@@ -12,8 +12,13 @@ import {
   Pencil,
   RotateCcw,
   Upload,
+  Sparkles,
 } from 'lucide-react';
 import { createClient } from '@/lib/supabase/client';
+import {
+  PsychologyTemplateLibraryDialog,
+  type PsychologyTemplateItem,
+} from './psychology-template-library';
 import {
   uploadAccountMedia,
   MEDIA_MAX_BYTES_BY_KIND,
@@ -97,6 +102,7 @@ const emptyForm: TemplateFormData = {
 };
 
 const COMMON_LANGUAGE_CODES = [
+  'hi',
   'en_US',
   'en_GB',
   'en',
@@ -137,6 +143,7 @@ export function TemplateManager() {
   const [loading, setLoading] = useState(true);
   const [templates, setTemplates] = useState<MessageTemplate[]>([]);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [libraryOpen, setLibraryOpen] = useState(false);
   const [submitting, setSubmitting] = useState(false);
   const [syncing, setSyncing] = useState(false);
   const [form, setForm] = useState<TemplateFormData>(emptyForm);
@@ -253,6 +260,24 @@ export function TemplateManager() {
       body_samples: template.sample_values?.body ?? [],
       footer_text: template.footer_text ?? '',
       buttons: template.buttons ?? [],
+    });
+    setDialogOpen(true);
+  }
+
+  function openFromLibrary(tpl: PsychologyTemplateItem) {
+    setEditingId(null);
+    setForm({
+      name: tpl.name,
+      category: tpl.category === 'UTILITY' ? 'Utility' : 'Marketing',
+      language: tpl.language || 'hi',
+      header_format: tpl.header ? 'text' : 'none',
+      header_content: tpl.header || '',
+      header_media_url: '',
+      header_sample: '',
+      body_text: tpl.body,
+      body_samples: tpl.example?.body_text?.[0] || [],
+      footer_text: tpl.footer || '',
+      buttons: (tpl.buttons || []).map((b) => ({ type: 'QUICK_REPLY', text: b.text })),
     });
     setDialogOpen(true);
   }
@@ -532,6 +557,14 @@ export function TemplateManager() {
             >
               <RefreshCw className={`size-4 ${syncing ? 'animate-spin' : ''}`} />
               {syncing ? t('syncing') : t('syncFromMeta')}
+            </Button>
+            <Button
+              variant="outline"
+              onClick={() => setLibraryOpen(true)}
+              className="border-emerald-500/40 text-emerald-400 hover:bg-emerald-500/10"
+            >
+              <Sparkles className="size-4 mr-1.5" />
+              100 Ready Templates
             </Button>
             <Button onClick={openCreate}>
               <Plus className="size-4" />
@@ -1161,6 +1194,11 @@ export function TemplateManager() {
           </DialogFooter>
         </DialogContent>
       </Dialog>
+      <PsychologyTemplateLibraryDialog
+        open={libraryOpen}
+        onOpenChange={setLibraryOpen}
+        onSelectTemplate={openFromLibrary}
+      />
     </section>
   );
 }

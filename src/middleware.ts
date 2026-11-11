@@ -1,5 +1,6 @@
 import { createServerClient } from '@supabase/ssr'
 import { NextResponse, type NextRequest } from 'next/server'
+import { isFounderEmail } from '@/lib/auth/founder'
 
 export async function middleware(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
@@ -70,11 +71,41 @@ export async function middleware(request: NextRequest) {
   }
 
   // Protected pages - redirect to login if not authenticated
-  const protectedPaths = ['/dashboard', '/inbox', '/contacts', '/pipelines', '/broadcasts', '/automations', '/settings']
+  const protectedPaths = [
+    '/dashboard',
+    '/inbox',
+    '/contacts',
+    '/pipelines',
+    '/broadcasts',
+    '/automations',
+    '/settings',
+    '/agents',
+    '/flows',
+    '/notifications',
+    '/superadmin',
+  ]
   if (!user && protectedPaths.some(path => request.nextUrl.pathname.startsWith(path))) {
     const url = request.nextUrl.clone()
     url.pathname = '/login'
     return withRefreshedCookies(NextResponse.redirect(url))
+  }
+
+  // Strict Founder-only gate for /superadmin and /api/superadmin
+  if (request.nextUrl.pathname.startsWith('/superadmin')) {
+    if (!user || !isFounderEmail(user.email)) {
+      const url = request.nextUrl.clone()
+      url.pathname = user ? '/dashboard' : '/login'
+      return withRefreshedCookies(NextResponse.redirect(url))
+    }
+  }
+
+  if (request.nextUrl.pathname.startsWith('/api/superadmin')) {
+    if (!user) {
+      return withRefreshedCookies(NextResponse.json({ error: 'Unauthorized' }, { status: 401 }))
+    }
+    if (!isFounderEmail(user.email)) {
+      return withRefreshedCookies(NextResponse.json({ error: 'Forbidden' }, { status: 403 }))
+    }
   }
 
   // API routes that need auth (not webhooks)
